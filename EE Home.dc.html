@@ -76,8 +76,8 @@ a:hover{color:#d4af37}
 <main>
   <section data-screen-label="Hero" aria-labelledby="hero-title" style="position:relative;overflow:hidden;min-height:clamp(660px,calc(100vh - 92px),960px);display:flex;flex-direction:column;background:#e2e6f0">
     <div ref="{{ refs.bg }}" aria-hidden="true" style="position:absolute;inset:0;transform-origin:62% 40%">
-      <div role="img" aria-label="Curving Los Angeles freeway overpass against a pale sky" style="position:absolute;inset:0;background-image:url('assets/ee-freeway-2400.jpg');background-size:cover;background-position:{{ bgPos }};background-repeat:no-repeat"></div>
-      <svg viewBox="0 0 1600 1068" preserveAspectRatio="{{ svgAlign }}" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+      <div role="img" aria-label="Curving Los Angeles freeway overpass against a pale sky" style="position:absolute;inset:0;background-image:url('assets/ee-freeway-2400.jpg');background-size:{{ bgSize }};background-position:{{ bgPos }};background-repeat:no-repeat"></div>
+      <svg viewBox="0 0 1600 1068" preserveAspectRatio="{{ svgAlign }}" style="position:absolute;left:{{ art.x }};top:{{ art.y }};width:{{ art.w }};height:{{ art.h }};overflow:visible">
         <defs>
           <filter id="eeGlow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="5"></feGaussianBlur></filter>
           <filter id="eeHeadGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="12"></feGaussianBlur></filter>
@@ -150,14 +150,31 @@ class Component extends DCLogic {
   ];
   COUNT_START = 3500; COUNT_STAGGER = 110; COUNT_DUR = 1400;
 
-  onResize = () => this.setState({ w: window.innerWidth });
+  // Measure the hero so the photo and the gold-line SVG can be placed together (see artBox).
+  onResize = () => {
+    const b = this.refs.bg && this.refs.bg.current;
+    this.setState({ w: window.innerWidth, bw: b ? b.clientWidth : null, bh: b ? b.clientHeight : null });
+  };
+
+  // Cover-fit the 2400x1602 photo. On desktop, pin it left and show it from 22.4% down
+  // its height at the top of the hero, matching the approved design (E&E_Website_Home_FA.pdf).
+  artBox(width) {
+    const { bw, bh } = this.state;
+    if (!bw || !bh) return null;
+    const s = Math.max(bw / 2400, bh / 1602), dw = 2400 * s, dh = 1602 * s;
+    const desktop = width >= 700;
+    const x = desktop ? 0 : (bw - dw) / 2;
+    const y = desktop ? Math.min(0, Math.max(bh - dh, -0.224 * dh)) : (bh - dh) / 2;
+    return { x, y, w: dw, h: dh };
+  }
 
   componentDidMount() {
     this.onResize();
     window.addEventListener('resize', this.onResize);
+    if (window.ResizeObserver && this.refs.bg.current) { this.ro = new ResizeObserver(this.onResize); this.ro.observe(this.refs.bg.current); }
     this.play();
   }
-  componentWillUnmount() { window.removeEventListener('resize', this.onResize); this.stop(); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); if (this.ro) this.ro.disconnect(); this.stop(); }
   componentDidUpdate(p) {
     if (p.introAnimation !== this.props.introAnimation || p.trailMode !== this.props.trailMode || p.countUp !== this.props.countUp) this.play();
   }
@@ -242,8 +259,11 @@ class Component extends DCLogic {
     const setHover = i => () => this.setState({ hover: i });
     return {
       refs: this.refs,
-      bgPos: width >= 700 ? '0% 50%' : '50% 50%',
-      svgAlign: width >= 700 ? 'xMinYMid slice' : 'xMidYMid slice',
+      ...(() => {
+        const a = this.artBox(width), px = n => n.toFixed(2) + 'px';
+        if (!a) return { bgSize: 'cover', bgPos: width >= 700 ? '0% 50%' : '50% 50%', svgAlign: width >= 700 ? 'xMinYMid slice' : 'xMidYMid slice', art: { x: '0px', y: '0px', w: '100%', h: '100%' } };
+        return { bgSize: px(a.w) + ' ' + px(a.h), bgPos: px(a.x) + ' ' + px(a.y), svgAlign: 'xMinYMin meet', art: { x: px(a.x), y: px(a.y), w: px(a.w), h: px(a.h) } };
+      })(),
       showNav,
       showBurger: !showNav,
       showPillText: width >= 640,
