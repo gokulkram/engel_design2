@@ -76,7 +76,7 @@ a:hover{color:#d4af37}
 </header>
 
 <main>
-  <section data-screen-label="Hero" aria-labelledby="hero-title" style="position:relative;overflow:hidden;min-height:clamp(660px,calc(100vh - var(--hdr)),960px);display:flex;flex-direction:column;background:#e2e6f0">
+  <section data-screen-label="Hero" aria-labelledby="hero-title" style="position:relative;overflow:hidden;min-height:clamp(500px,calc(100vh - var(--hdr)),960px);min-height:clamp(500px,calc(100svh - var(--hdr)),960px);display:flex;flex-direction:column;background:#e2e6f0">
     <div ref="{{ refs.bg }}" aria-hidden="true" style="position:absolute;inset:0;transform-origin:62% 40%">
       <div role="img" aria-label="Curving Los Angeles freeway overpass against a pale sky" style="position:absolute;inset:0;background-image:url('assets/ee-freeway-2400.jpg');background-size:{{ bgSize }};background-position:{{ bgPos }};background-repeat:no-repeat"></div>
       <svg viewBox="0 0 1600 1068" preserveAspectRatio="{{ svgAlign }}" style="position:absolute;left:{{ art.x }};top:{{ art.y }};width:{{ art.w }};height:{{ art.h }};overflow:visible">
@@ -92,7 +92,7 @@ a:hover{color:#d4af37}
     </div>
     <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(236,241,248,0.6) 0%,rgba(236,241,248,0.25) 38%,rgba(236,241,248,0) 60%);pointer-events:none"></div>
 
-    <div style="position:relative;flex:1;width:100%;max-width:var(--wrap);margin:0 auto;padding:clamp(34px,3.78vw,76px) var(--gut) 48px">
+    <div style="position:relative;flex:1;width:100%;max-width:var(--wrap);margin:0 auto;padding:clamp(24px,min(3.78vw,7vh),76px) var(--gut) clamp(20px,4vh,48px)">
       <h1 id="hero-title" style="margin:0;display:flex;flex-direction:column;align-items:flex-start;color:#1d2653;text-transform:uppercase">
         <span ref="{{ refs.l1 }}" style="font:500 clamp(28px,3.37vw,64px)/1 Jost,Futura,Arial,sans-serif;letter-spacing:-0.03em">Wherever the</span>
         <span ref="{{ refs.l2 }}" style="font:500 clamp(42px,5.05vw,96px)/1 Jost,Futura,Arial,sans-serif;letter-spacing:-0.03em;margin-top:-0.045em">Truth Leads.</span>
@@ -105,15 +105,15 @@ a:hover{color:#d4af37}
         <h2 style="margin:0;display:inline-flex;align-items:center;background:#d4af37;color:#1d2653;font:600 clamp(16px,2vw,27px)/1 Jost,Futura,Arial,sans-serif;text-transform:uppercase;letter-spacing:0.01em;padding:clamp(12px,1.2vw,17px) clamp(26px,3vw,44px) clamp(11px,1.1vw,15px) clamp(14px,1.2vw,18px);border-radius:0 22px 0 0">Our Numbers Do the Talking</h2>
       </div>
       <div style="background:linear-gradient(100deg,rgba(29,38,83,0.95) 0%,rgba(41,57,149,0.9) 100%);backdrop-filter:blur(6px) saturate(1.1);-webkit-backdrop-filter:blur(6px) saturate(1.1)">
-        <div style="max-width:var(--wrap);margin:0 auto;padding:clamp(10px,1.4vw,18px) var(--gut) clamp(16px,2vw,26px)">
+        <div style="max-width:var(--wrap);margin:0 auto;padding:clamp(8px,0.95vw,14px) var(--gut) clamp(16px,2vw,26px)">
           <div style="overflow:hidden">
             <ul ref="{{ refs.stats }}" style="list-style:none;margin:-1px 0 0 -1px;padding:0;display:grid;grid-template-columns:{{ statCols }}">
               <sc-for list="{{ stats }}" as="s" hint-placeholder-count="6">
                 <li data-stat="" style="border-left:1px solid rgba(226,230,240,0.16);border-top:1px solid rgba(226,230,240,0.16);display:flex">
-                  <a href="{{ s.href }}" onMouseEnter="{{ s.enter }}" onMouseLeave="{{ statLeave }}" onFocus="{{ s.enter }}" onBlur="{{ statLeave }}" aria-label="{{ s.aria }}" style="flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:clamp(18px,2vw,26px) 12px clamp(14px,1.6vw,20px);color:#ffffff;opacity:{{ s.op }};background:{{ s.bg }};transition:background .4s ease,opacity .4s ease;outline-offset:-3px">
+                  <a href="{{ s.href }}" onMouseEnter="{{ s.enter }}" onMouseLeave="{{ statLeave }}" onFocus="{{ s.enter }}" onBlur="{{ statLeave }}" aria-label="{{ s.aria }}" style="position:relative;flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:clamp(18px,2vw,26px) 12px clamp(23px,1.9vw,28px);color:#ffffff;opacity:{{ s.op }};background:{{ s.bg }};transition:background .4s ease,opacity .4s ease;outline-offset:-3px">
                     <strong style="font:600 clamp(34px,3.6vw,54px)/1 Jost,Futura,Arial,sans-serif;color:#d4af37;letter-spacing:0.005em;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap;transform:{{ s.numT }};text-shadow:{{ s.glow }};transition:transform .5s cubic-bezier(.2,.8,.2,1),text-shadow .5s ease">{{ s.display }}</strong>
                     <span style="font:400 clamp(13px,1.05vw,15.5px)/1.3 Jost,Futura,Arial,sans-serif;color:#ffffff;max-width:150px;text-wrap:balance">{{ s.label }}</span>
-                    <span aria-hidden="true" style="display:flex;flex-direction:column;align-items:center;gap:7px;margin-top:2px">
+                    <span aria-hidden="true" style="position:absolute;left:0;right:0;bottom:clamp(2px,0.3vw,5px);display:flex;flex-direction:column;align-items:center;gap:5px;pointer-events:none">
                       <span style="height:1px;background:#d4af37;width:{{ s.rule }};transition:width .45s cubic-bezier(.2,.8,.2,1)"></span>
                       <span style="font:500 10.5px/1 Jost,Futura,Arial,sans-serif;letter-spacing:0.18em;text-transform:uppercase;color:#d4af37;opacity:{{ s.moreOp }};transform:{{ s.moreT }};transition:opacity .4s ease,transform .45s ease">Learn more →</span>
                     </span>
