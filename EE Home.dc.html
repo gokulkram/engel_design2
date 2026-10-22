@@ -17,7 +17,7 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&amp;family=Open+Sans:wght@600;700&amp;display=swap">
 <link rel="preload" as="image" href="assets/ee-freeway-2400.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"AccountingService","name":"Engel & Engel LLP","description":"California's top forensic accountants — forensic accounting, expert witness testimony, business valuation and litigation support.","url":"https://www.engelandengel.com/","telephone":"+1-310-277-2220","foundingDate":"1994","address":{"@type":"PostalAddress","streetAddress":"350 S Grand Avenue, Suite 3160","addressLocality":"Los Angeles","addressRegion":"CA","postalCode":"90071","addressCountry":"US"},"areaServed":"California"}</script>
 <style>
@@ -25,33 +25,35 @@ html,body{margin:0;padding:0;background:#ffffff;color:#11162d;font-family:"Jost"
 a{color:#293995;text-decoration:none}
 a:hover{color:#d4af37}
 *{box-sizing:border-box}
+/* Sizes taken from the 1366px-wide design PDF (E&E_Website_Home_FA.pdf). */
+:root{--wrap:1440px;--gut:clamp(20px,5.56vw,80px);--hdr:clamp(84px,9.2vw,132px);--gutR:clamp(20px,4.1vw,60px)}
 </style>
 </helmet>
 
 <header data-screen-label="Header" style="position:sticky;top:0;z-index:20;background:#ffffff;box-shadow:0 1px 0 #e2e6f0,0 6px 24px rgba(17,22,45,0.06)">
-  <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4.5vw,64px);height:92px;display:flex;align-items:center;justify-content:space-between;gap:32px">
+  <div style="max-width:var(--wrap);margin:0 auto;padding:0 var(--gutR) 0 var(--gut);height:var(--hdr);display:flex;align-items:center;justify-content:space-between;gap:clamp(20px,2.4vw,40px)">
     <a href="/" aria-label="Engel &amp; Engel LLP Forensic Accountants — Home" style="display:flex;flex:none">
-      <img src="assets/ee-logo-horizontal-cropped.png" alt="Engel &amp; Engel LLP Forensic Accountants" width="1084" height="177" style="height:clamp(34px,3.4vw,46px);width:auto;display:block">
+      <img src="assets/ee-logo-horizontal-cropped.png" alt="Engel &amp; Engel LLP Forensic Accountants" width="1084" height="177" style="height:clamp(30px,3.1vw,48px);width:auto;display:block">
     </a>
     <sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
-      <nav aria-label="Primary" style="display:flex;align-items:center;gap:clamp(18px,2.2vw,34px);margin-left:auto">
+      <nav aria-label="Primary" style="display:flex;align-items:center;gap:clamp(14px,1.8vw,28px);margin-left:auto;margin-right:clamp(0px,0.8vw,14px);position:relative;top:-0.11vw">
         <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
-          <a href="{{ n.href }}" onMouseEnter="{{ n.enter }}" onMouseLeave="{{ navLeave }}" style="position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px 0;font:500 15px/1 Jost,Futura,Arial,sans-serif;letter-spacing:0.06em;text-transform:uppercase;color:#1d2653">
+          <a href="{{ n.href }}" onMouseEnter="{{ n.enter }}" onMouseLeave="{{ navLeave }}" style="position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px 0;font:600 clamp(15px,1.355vw,21px)/1 Jost,Futura,Arial,sans-serif;letter-spacing:0;text-transform:uppercase;color:#4a5175">
             <span>{{ n.label }}</span>
             <span aria-hidden="true" style="height:2px;background:#d4af37;width:{{ n.rule }};transition:width .35s cubic-bezier(.2,.7,.2,1)"></span>
           </a>
         </sc-for>
       </nav>
     </sc-if>
-    <div style="display:flex;align-items:center;gap:14px;flex:none">
-      <a href="tel:+13102772220" aria-label="Call (310) 277-2220 — Talk to an expert" style="display:flex;align-items:center;gap:12px;background:#1d2653;border-radius:999px;padding:8px;padding-right:{{ pillPadR }};transition:background .3s" style-hover="background:#293995">
-        <span style="width:38px;height:38px;border-radius:50%;background:#d4af37;display:flex;align-items:center;justify-content:center;flex:none">
+    <div style="display:flex;align-items:center;gap:14px;flex:none;position:relative;top:{{ pillTop }}">
+      <a href="tel:+13102772220" aria-label="Call (310) 277-2220 — Talk to an expert" style="display:flex;align-items:center;gap:clamp(12px,1.17vw,18px);background:#1d2653;border-radius:999px;padding:clamp(8px,1.06vw,16px);padding-left:{{ pillPadL }};padding-right:{{ pillPadR }};box-shadow:0 6px 14px rgba(17,22,45,0.28);transition:background .3s" style-hover="background:#293995">
+        <span style="width:clamp(36px,2.93vw,44px);height:clamp(36px,2.93vw,44px);border-radius:50%;background:#d4af37;display:flex;align-items:center;justify-content:center;flex:none">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z" fill="#1d2653"></path></svg>
         </span>
         <sc-if value="{{ showPillText }}" hint-placeholder-val="{{ true }}">
-          <span style="display:flex;flex-direction:column;gap:3px;line-height:1">
-            <span style="font:600 16px/1 Jost,Futura,Arial,sans-serif;color:#ffffff;letter-spacing:0.02em">(310) 277-2220</span>
-            <span style="font:500 10.5px/1 Jost,Futura,Arial,sans-serif;color:#d4af37;letter-spacing:0.14em;text-transform:uppercase">Talk to an expert</span>
+          <span style="display:flex;flex-direction:column;gap:clamp(5px,0.6vw,9px);line-height:1">
+            <span style="font:700 clamp(15px,1.3vw,20px)/1 'Open Sans',Arial,sans-serif;color:#ffffff;letter-spacing:0">(310) 277-2220</span>
+            <span style="font:600 clamp(10px,0.84vw,13px)/1 'Open Sans',Arial,sans-serif;color:#d4af37;letter-spacing:0.12em;text-transform:uppercase">Talk to an expert</span>
           </span>
         </sc-if>
       </a>
@@ -65,7 +67,7 @@ a:hover{color:#d4af37}
     </div>
   </div>
   <sc-if value="{{ menuVisible }}" hint-placeholder-val="{{ false }}">
-    <nav aria-label="Mobile" style="position:absolute;top:100%;left:0;right:0;background:#ffffff;border-top:1px solid #e2e6f0;box-shadow:0 18px 30px rgba(17,22,45,0.12);padding:8px clamp(20px,4.5vw,64px) 20px;display:flex;flex-direction:column">
+    <nav aria-label="Mobile" style="position:absolute;top:100%;left:0;right:0;background:#ffffff;border-top:1px solid #e2e6f0;box-shadow:0 18px 30px rgba(17,22,45,0.12);padding:8px var(--gut) 20px;display:flex;flex-direction:column">
       <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
         <a href="{{ n.href }}" style="padding:16px 0;border-bottom:1px solid #e2e6f0;font:500 16px/1 Jost,Futura,Arial,sans-serif;letter-spacing:0.08em;text-transform:uppercase;color:#1d2653">{{ n.label }}</a>
       </sc-for>
@@ -74,7 +76,7 @@ a:hover{color:#d4af37}
 </header>
 
 <main>
-  <section data-screen-label="Hero" aria-labelledby="hero-title" style="position:relative;overflow:hidden;min-height:clamp(660px,calc(100vh - 92px),960px);display:flex;flex-direction:column;background:#e2e6f0">
+  <section data-screen-label="Hero" aria-labelledby="hero-title" style="position:relative;overflow:hidden;min-height:clamp(660px,calc(100vh - var(--hdr)),960px);display:flex;flex-direction:column;background:#e2e6f0">
     <div ref="{{ refs.bg }}" aria-hidden="true" style="position:absolute;inset:0;transform-origin:62% 40%">
       <div role="img" aria-label="Curving Los Angeles freeway overpass against a pale sky" style="position:absolute;inset:0;background-image:url('assets/ee-freeway-2400.jpg');background-size:{{ bgSize }};background-position:{{ bgPos }};background-repeat:no-repeat"></div>
       <svg viewBox="0 0 1600 1068" preserveAspectRatio="{{ svgAlign }}" style="position:absolute;left:{{ art.x }};top:{{ art.y }};width:{{ art.w }};height:{{ art.h }};overflow:visible">
@@ -90,20 +92,20 @@ a:hover{color:#d4af37}
     </div>
     <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(236,241,248,0.6) 0%,rgba(236,241,248,0.25) 38%,rgba(236,241,248,0) 60%);pointer-events:none"></div>
 
-    <div style="position:relative;flex:1;width:100%;max-width:1320px;margin:0 auto;padding:clamp(44px,9vh,112px) clamp(20px,4.5vw,64px) 48px">
+    <div style="position:relative;flex:1;width:100%;max-width:var(--wrap);margin:0 auto;padding:clamp(34px,3.78vw,76px) var(--gut) 48px">
       <h1 id="hero-title" style="margin:0;display:flex;flex-direction:column;align-items:flex-start;color:#1d2653;text-transform:uppercase">
-        <span ref="{{ refs.l1 }}" style="font:500 clamp(30px,4.4vw,64px)/1 Jost,Futura,Arial,sans-serif;letter-spacing:-0.005em">Wherever the</span>
-        <span ref="{{ refs.l2 }}" style="font:600 clamp(46px,6.4vw,108px)/0.98 Jost,Futura,Arial,sans-serif;letter-spacing:-0.015em;margin-top:4px">Truth Leads.</span>
-        <span ref="{{ refs.l3 }}" style="font:400 clamp(18px,1.9vw,27px)/1.25 Jost,Futura,Arial,sans-serif;color:#11162d;text-transform:none;letter-spacing:0.005em;margin-top:clamp(14px,1.8vw,24px)">California's Top Forensic Accountants</span>
+        <span ref="{{ refs.l1 }}" style="font:500 clamp(28px,3.37vw,64px)/1 Jost,Futura,Arial,sans-serif;letter-spacing:-0.03em">Wherever the</span>
+        <span ref="{{ refs.l2 }}" style="font:500 clamp(42px,5.05vw,96px)/1 Jost,Futura,Arial,sans-serif;letter-spacing:-0.03em;margin-top:-0.045em">Truth Leads.</span>
+        <span ref="{{ refs.l3 }}" style="font:400 clamp(17px,1.83vw,35px)/1.25 Jost,Futura,Arial,sans-serif;color:#1d2653;text-transform:none;letter-spacing:0;margin-top:0.39em;margin-left:0.44vw">California's Top Forensic Accountants</span>
       </h1>
     </div>
 
     <div ref="{{ refs.band }}" style="position:relative;width:100%">
-      <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4.5vw,64px)">
+      <div style="max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)">
         <h2 style="margin:0;display:inline-flex;align-items:center;background:#d4af37;color:#1d2653;font:600 clamp(16px,2vw,27px)/1 Jost,Futura,Arial,sans-serif;text-transform:uppercase;letter-spacing:0.01em;padding:clamp(12px,1.2vw,17px) clamp(26px,3vw,44px) clamp(11px,1.1vw,15px) clamp(14px,1.2vw,18px);border-radius:0 22px 0 0">Our Numbers Do the Talking</h2>
       </div>
       <div style="background:linear-gradient(100deg,rgba(29,38,83,0.95) 0%,rgba(41,57,149,0.9) 100%);backdrop-filter:blur(6px) saturate(1.1);-webkit-backdrop-filter:blur(6px) saturate(1.1)">
-        <div style="max-width:1320px;margin:0 auto;padding:clamp(10px,1.4vw,18px) clamp(20px,4.5vw,64px) clamp(16px,2vw,26px)">
+        <div style="max-width:var(--wrap);margin:0 auto;padding:clamp(10px,1.4vw,18px) var(--gut) clamp(16px,2vw,26px)">
           <div style="overflow:hidden">
             <ul ref="{{ refs.stats }}" style="list-style:none;margin:-1px 0 0 -1px;padding:0;display:grid;grid-template-columns:{{ statCols }}">
               <sc-for list="{{ stats }}" as="s" hint-placeholder-count="6">
@@ -267,7 +269,9 @@ class Component extends DCLogic {
       showNav,
       showBurger: !showNav,
       showPillText: width >= 640,
-      pillPadR: width >= 640 ? '22px' : '8px',
+      pillPadR: width >= 640 ? 'clamp(20px,2.4vw,36px)' : '8px',
+      pillTop: width >= 1100 ? '-0.48vw' : '0px',
+      pillPadL: width >= 640 ? 'clamp(12px,1.9vw,28px)' : '8px',
       menuOpen: menu ? 'true' : 'false',
       menuVisible: !showNav && menu,
       toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
