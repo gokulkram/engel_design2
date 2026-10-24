@@ -99,7 +99,7 @@ a:hover{color:#d4af37}
       <h1 id="hero-title" style="margin:0;display:flex;flex-direction:column;align-items:flex-start;color:#1d2653;text-transform:uppercase">
         <span ref="{{ refs.l1 }}" style="font:500 clamp(28px,3.37vw,64px)/1 Jost,Futura,Arial,sans-serif;letter-spacing:-0.03em">Wherever the</span>
         <span ref="{{ refs.l2 }}" style="font:500 clamp(42px,5.05vw,96px)/1 Jost,Futura,Arial,sans-serif;letter-spacing:-0.03em;margin-top:-0.045em">Truth Leads.</span>
-        <span ref="{{ refs.l3 }}" style="font:400 clamp(17px,1.83vw,35px)/1.25 Jost,Futura,Arial,sans-serif;color:#1d2653;text-transform:none;letter-spacing:0;margin-top:0.39em;margin-left:0.44vw">Nationally Recognized Forensic Accountants</span>
+        <span ref="{{ refs.l3 }}" style="font:400 clamp(17px,1.83vw,35px)/1.25 Jost,Futura,Arial,sans-serif;color:#1d2653;text-transform:none;letter-spacing:0;margin-top:0.39em;margin-left:0.44vw;max-width:{{ subMax }}">Nationally Recognized Forensic Accountants</span>
       </h1>
     </div>
 
@@ -141,9 +141,9 @@ class Component extends DCLogic {
     { label: 'Contact', href: '/contact' }
   ];
   STATS = [
-    { label: 'Year Forensic Accounting Practice', lines: 'Year Forensic\nAccounting\nPractice', href: '/#about', to: 30, suffix: '+', final: '30+' },
+    { label: 'Years of Forensic Accounting Practice', lines: 'Years of Forensic\nAccounting Practice', href: '/#about', to: 30, suffix: '+', final: '30+' },
     { label: 'Forensic Accounting Cases', lines: 'Forensic Accounting\nCases', href: '/cases', to: 1000, suffix: '+', comma: true, final: '1,000+' },
-    { label: 'Authored Research Publications', lines: 'Authored\nResearch\nPublications', href: '/publications', to: 20, final: '20' },
+    { label: 'Research Publications', lines: 'Research\nPublications', href: '/publications', to: 20, final: '20' },
     { label: 'Professional Certifications', lines: 'Professional\nCertifications', href: '/#certifications', to: 6, final: '6' },
     { label: 'Forensic Experience', href: '/team', final: 'BIG 4', text: true },
     { label: 'Jury Award', href: '/cases', to: 2.3, dec: 1, prefix: '$', suffix: 'B', final: '$2.3B' }
@@ -196,7 +196,8 @@ class Component extends DCLogic {
     if (!bw || !bh) return null;
     const s = Math.max(bw / 2400, bh / 1602), dw = 2400 * s, dh = 1602 * s;
     const desktop = width >= 700;
-    const x = desktop ? 0 : (bw - dw) / 2;
+    // Phones: show the photo 34.8% across its hidden width (-270.76px at 390 wide).
+    const x = desktop ? 0 : 0.3478 * (bw - dw);
     // Desktop: photo sits 19.2% of its height above the hero top (175px at 1366 wide).
     const y = desktop ? Math.min(0, Math.max(bh - dh, -0.192 * dh)) : (bh - dh) / 2;
     const base = { x, y, w: dw, h: dh };
@@ -205,7 +206,7 @@ class Component extends DCLogic {
     if (this._artKey === key) return this._art;
     // Desktop keeps its fixed position unless the trail would touch the headline;
     // phones also keep a comfortable gap.
-    const need = desktop ? -10 : Math.max(16, bw * 0.015);
+    const need = -10;
     let best = base, bestC = this.clearance(base, bw, bh), found = bestC >= need;
     const tryBox = b => { if (found) return; const c = this.clearance(b, bw, bh); if (c > bestC) { best = b; bestC = c; } if (c >= need) found = true; };
     // 1. Pan: phones slide the photo right, then down; desktop slides it down.
@@ -320,7 +321,9 @@ class Component extends DCLogic {
         return { bgSize: px(a.w) + ' ' + px(a.h), bgPos: px(a.x) + ' ' + px(a.y), svgAlign: 'xMinYMin meet', art: { x: px(a.x), y: px(a.y), w: px(a.w), h: px(a.h) } };
       })(),
       // Tablets and phones: drop the headline down out of the empty sky, closer to the bridge.
-      heroPadT: width < 900 ? 'clamp(24px,22svh,260px)' : 'clamp(24px,min(3.78vw,7vh),76px)',
+      // Phones: two-line subtitle so it stays left of the gold trail.
+      subMax: width < 700 ? '200px' : 'none',
+      heroPadT: width < 700 ? '28px' : width < 900 ? 'clamp(24px,22svh,260px)' : 'clamp(24px,min(3.78vw,7vh),76px)',
       showNav,
       showBurger: !showNav,
       showPillText: width >= 640,
