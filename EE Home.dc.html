@@ -79,8 +79,8 @@ a:hover{color:#d4af37}
 
 <main>
   <section data-screen-label="Hero" aria-labelledby="hero-title" style="position:relative;overflow:hidden;min-height:clamp(360px,calc(100vh - var(--hdr)),960px);min-height:clamp(360px,calc(100svh - var(--hdr)),960px);display:flex;flex-direction:column;background:#e2e6f0">
-    <div ref="{{ refs.bg }}" aria-hidden="true" style="position:absolute;inset:0;transform-origin:62% 40%">
-      <div role="img" aria-label="Curving Los Angeles freeway overpass against a pale sky" style="position:absolute;inset:0;background-image:url('assets/ee-freeway-2400.jpg');background-size:{{ bgSize }};background-position:{{ bgPos }};background-repeat:no-repeat;background-color:{{ photoFill }};filter:brightness(1.15) saturate(1.05)"></div>
+    <div ref="{{ refs.bg }}" aria-hidden="true" style="position:absolute;inset:0;transform-origin:62% 40%;background:{{ photoFill }}">
+      <div role="img" aria-label="Curving Los Angeles freeway overpass against a pale sky" style="position:absolute;inset:0;background-image:url('assets/ee-freeway-2400.jpg');background-size:{{ bgSize }};background-position:{{ bgPos }};background-repeat:no-repeat;filter:brightness(1.15) saturate(1.05)"></div>
       <svg viewBox="0 0 1600 1068" preserveAspectRatio="{{ svgAlign }}" style="position:absolute;left:{{ art.x }};top:{{ art.y }};width:{{ art.w }};height:{{ art.h }};overflow:visible">
         <defs>
           <filter id="eeGlow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="5"></feGaussianBlur></filter>
@@ -336,8 +336,9 @@ class Component extends DCLogic {
       refs: this.refs,
       ...(() => {
         const a = this.artBox(width), px = n => n.toFixed(2) + 'px';
-        if (!a) return { photoFill: 'transparent', bgSize: 'cover', bgPos: width >= 700 ? '0% 50%' : '50% 50%', svgAlign: width >= 700 ? 'xMinYMid slice' : 'xMidYMid slice', art: { x: '0px', y: '0px', w: '100%', h: '100%' } };
-        return { photoFill: a.h < (this.state.bh || 0) - 0.5 ? '#3c4a61' : 'transparent', bgSize: px(a.w) + ' ' + px(a.h), bgPos: px(a.x) + ' ' + px(a.y), svgAlign: 'none', art: { x: px(a.x), y: px(a.y), w: px(a.w), h: px(a.h) } };
+        if (!a) return { photoFill: 'none', bgSize: 'cover', bgPos: width >= 700 ? '0% 50%' : '50% 50%', svgAlign: width >= 700 ? 'xMinYMid slice' : 'xMidYMid slice', art: { x: '0px', y: '0px', w: '100%', h: '100%' } };
+        return { // Phones/tablets: below the photo (behind the numbers band) fill with the band's own blue gradient.
+        photoFill: a.h < (this.state.bh || 0) - 0.5 ? 'linear-gradient(90deg,rgba(52,63,145,0.93) 0%,rgba(52,63,145,0.93) 76%,rgba(52,58,113,0.93) 88%,rgba(34,38,81,0.93) 100%)' : 'none', bgSize: px(a.w) + ' ' + px(a.h), bgPos: px(a.x) + ' ' + px(a.y), svgAlign: 'none', art: { x: px(a.x), y: px(a.y), w: px(a.w), h: px(a.h) } };
       })(),
       // Tablets and phones: drop the headline down out of the empty sky, closer to the bridge.
       // Phones: two-line subtitle so it stays left of the gold trail.
