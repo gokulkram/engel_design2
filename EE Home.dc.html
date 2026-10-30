@@ -148,7 +148,8 @@ class Component extends DCLogic {
     { label: 'Forensic Experience', href: '/team', final: 'BIG 4', text: true },
     { label: 'Jury Award', href: '/cases', to: 2.3, dec: 1, prefix: '$', suffix: 'B', final: '$2.3B' }
   ];
-  COUNT_START = 4200; COUNT_STAGGER = 130; COUNT_DUR = 1680;
+  // Stat cards load one by one: the next card rises in only after the previous one finishes counting.
+  COUNT_START = 4200; COUNT_DUR = 1900; COUNT_STAGGER = 1900;
 
   // Measure the hero so the photo and the gold-line SVG can be placed together (see artBox).
   // Also measures the three headline lines (layout boxes, ignoring the intro transforms).
@@ -281,7 +282,7 @@ class Component extends DCLogic {
     const B0 = 3150 * S;
     A(el('band'), [{ transform: 'translateY(105%)' }, { transform: 'none' }], { duration: 950 * S, delay: B0, easing: ease });
     const lis = el('stats') ? el('stats').querySelectorAll('[data-stat]') : [];
-    lis.forEach((li, i) => A(li, [{ opacity: 0, transform: 'translateY(18px)' }, { opacity: 1, transform: 'none' }], { duration: 800 * S, delay: B0 + 300 * S + i * this.COUNT_STAGGER, easing: ease }));
+    lis.forEach((li, i) => A(li, [{ opacity: 0, transform: 'translateY(24px)' }, { opacity: 1, transform: 'none' }], { duration: 700 * S, delay: B0 + 300 * S + i * this.COUNT_STAGGER, easing: ease }));
 
     if (this.props.countUp ?? true) {
       this.setState({ countT: 0 });
@@ -362,7 +363,7 @@ class Component extends DCLogic {
           aria: `${s.final} ${s.label} — learn more`,
           enter: setHover(i),
           op: dim ? 0.6 : 1,
-          bg: on ? 'rgba(255,255,255,0.07)' : 'rgba(255,255,255,0)',
+          bg: 'transparent',
           numT: on ? 'translateY(-4px) scale(1.07)' : 'none',
           glow: on ? '0 0 26px rgba(212,175,55,0.5)' : '0 0 0 rgba(212,175,55,0)'
         };
