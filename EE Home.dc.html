@@ -202,17 +202,11 @@ class Component extends DCLogic {
     // Desktop: photo sits 19.2% of its natural height above the hero top (175px at 1366 wide).
     // The photo is squashed vertically to set sizes: 1093x630 at 1093 wide, 1366x800 at 1366 wide
     // (blended in between, held beyond). The gold line is stretched the same way.
-    // Never squash so far that the band can't hide the gap.
+    // The photo always reaches the bottom of the hero (no hard edge behind the numbers band).
     const t = Math.min(1, Math.max(0, (bw - 1093) / (1366 - 1093)));
     const SQUASH = (630 / (1602 * 1093 / 2400)) * (1 - t) + (800 / (1602 * 1366 / 2400)) * t;
-    let y, h;
-    if (desktop) {
-      y = Math.min(0, Math.max(bh - dh, -0.192 * dh));
-      h = Math.max(dh * SQUASH, bh - y - 120);
-    } else {
-      h = Math.max(dh * SQUASH, bh);
-      y = (bh - h) / 2;
-    }
+    const h = Math.max(dh * SQUASH, bh);
+    const y = desktop ? Math.min(0, Math.max(bh - h, -0.192 * dh)) : (bh - h) / 2;
     const base = { x, y, w: dw, h };
     if (!this.trail || !lines || !lines.length) return base;
     const key = [bw, bh, desktop, ...lines.map(r => [r.l, r.t, r.r, r.b].join(','))].join('|');
@@ -221,7 +215,7 @@ class Component extends DCLogic {
     // phones also keep a comfortable gap.
     const need = -10;
     let best = base, bestC = this.clearance(base, bw, bh), found = bestC >= need;
-    const tryBox = b => { if (found) return; const c = this.clearance(b, bw, bh); if (c > bestC) { best = b; bestC = c; } if (c >= need) found = true; };
+    const tryBox = b => { if (found || b.y + b.h < bh - 0.5) return; const c = this.clearance(b, bw, bh); if (c > bestC) { best = b; bestC = c; } if (c >= need) found = true; };
     // 1. Pan: phones slide the photo right, then down; desktop slides it down.
     let p = { ...base };
     if (!desktop) for (let nx = x; nx <= 0 && !found; nx = Math.min(0, nx + 4)) { p = { ...p, x: nx }; tryBox(p); if (nx === 0) break; }
