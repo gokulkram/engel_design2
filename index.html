@@ -29,6 +29,113 @@ a:hover{color:#d4af37}
 /* Content column widened from 1440px to 1920px so big screens keep the headline near the left
    edge and the hero shows the full freeway (client-approved framing). */
 :root{--wrap:1920px;--gut:clamp(20px,5.56vw,80px);--hdr:clamp(64px,min(9.2vw,16vh),132px);--gutR:clamp(20px,4.1vw,60px)}
+
+/* Let the page wrapper grow with the content so the sticky header stays pinned past the hero. */
+html body #dc-root,html body #dc-root>.sc-host{height:auto;min-height:100%}
+
+/* About the Firm (content and look taken from engel-new.vercel.app). */
+.ee-about{background:#ffffff;scroll-margin-top:var(--hdr)}
+.ee-about-grid{max-width:var(--wrap);margin:0 auto;padding:clamp(64px,8vw,120px) var(--gut);display:grid;grid-template-columns:1fr;align-items:center;gap:48px}
+.ee-about-eyebrow{margin:0 0 24px;display:flex;align-items:center;gap:16px;font:600 14px/1.4 Jost,Futura,Arial,sans-serif;letter-spacing:0.18em;text-transform:uppercase;color:#293995}
+.ee-about-eyebrow::before{content:"";width:48px;height:2px;background:#d4af37}
+.ee-about h2{margin:0;display:flex;flex-direction:column;text-transform:uppercase;color:#1d2653}
+.ee-about-big{font:500 clamp(30px,3.4vw,56px)/1 Jost,Futura,Arial,sans-serif;letter-spacing:-0.03em}
+.ee-about-big + .ee-about-big{margin-top:4px}
+.ee-about-sub{margin-top:16px;font:400 clamp(17px,1.5vw,24px)/1.375 Jost,Futura,Arial,sans-serif;text-transform:none;color:#293995}
+.ee-about-copy{margin-top:32px;max-width:640px;color:#11162d}
+.ee-about-copy p{margin:0 0 20px;font-size:16px;line-height:1.625}
+.ee-about-copy p:last-child{margin-bottom:0}
+.ee-about-copy .ee-about-lead{font-size:clamp(18px,1.4vw,21px);color:#1d2653}
+.ee-about-btn{margin-top:40px;display:inline-flex;align-items:center;gap:12px;border-radius:8px;background:#d4af37;padding:14px 28px;font:600 14px/1.4 Jost,Futura,Arial,sans-serif;letter-spacing:0.12em;text-transform:uppercase;color:#1d2653;box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);transition:background-color .2s}
+.ee-about-btn:hover{background:#b8962c;color:#1d2653}
+.ee-about-btn svg{width:16px;height:16px;transition:transform .2s}
+.ee-about-btn:hover svg{transform:translateX(4px)}
+.ee-about-media{width:100%;max-width:460px;margin:0 auto}
+.ee-about-frame{position:relative;margin:0 20px 20px 0}
+.ee-about-frame::before{content:"";position:absolute;inset:0;transform:translate(20px,20px);border:2px solid #d4af37;border-radius:0 26px 0 0}
+.ee-about-photo{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:0 26px 0 0;background:linear-gradient(to bottom,#cfdcf0,#e2e6f0,#f4f6fb)}
+.ee-about-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:bottom;transform-origin:50% 100%;animation:eePhotoDrift 18s ease-in-out infinite alternate}
+.ee-about-est{position:absolute;left:0;bottom:0;border-radius:0 clamp(14px,1.5vw,26px) 0 0;background:rgba(212,175,55,0.95);padding:clamp(10px,1vw,14px) clamp(18px,2vw,30px);color:#293995;font-family:Jost,Futura,Arial,sans-serif}
+.ee-about-est span{display:block;font-size:12px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase}
+.ee-about-est strong{display:block;font-size:clamp(28px,2.6vw,40px);font-weight:600;line-height:1}
+@keyframes eePhotoDrift{from{transform:scale(1)}to{transform:scale(1.07)}}
+.ee-members{background:#e2e6f0}
+.ee-members-in{max-width:var(--wrap);margin:0 auto;padding:40px var(--gut);display:flex;flex-direction:column;align-items:center;gap:24px}
+.ee-members-title{margin:0;flex-shrink:0;text-align:center;font:600 12px/1.5 Jost,Futura,Arial,sans-serif;letter-spacing:0.2em;text-transform:uppercase;color:#293995}
+.ee-members-title br{display:none}
+.ee-members-rule{display:none;width:1px;height:48px;background:rgba(29,38,83,0.15)}
+.ee-members-view{width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.ee-members-track{display:flex;width:max-content;align-items:center;animation:eeLogoScroll 30s linear infinite}
+.ee-members-track img{display:block;flex:none;margin-right:56px;object-fit:contain;mix-blend-mode:multiply}
+.ee-members-track .m-aicpa{width:128px;height:40px}
+.ee-members-track .m-calcpa{width:144px;height:56px}
+.ee-members-track .m-acfe{width:160px;height:56px}
+.ee-members-track .m-aira{width:176px;height:40px}
+.ee-members-track .m-nacva{width:80px;height:64px}
+@keyframes eeLogoScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (min-width:768px){
+  .ee-about-copy p{font-size:17px}
+  .ee-members-track img{margin-right:80px}
+  .ee-members-track .m-aicpa,.ee-members-track .m-aira{height:48px}
+  .ee-members-track .m-calcpa,.ee-members-track .m-acfe{height:64px}
+  .ee-members-track .m-nacva{height:80px}
+}
+@media (min-width:1024px){
+  .ee-about-grid{grid-template-columns:7fr 5fr;gap:64px}
+  .ee-about-media{max-width:none}
+  .ee-members-in{flex-direction:row;gap:48px}
+  .ee-members-title{text-align:left}
+  .ee-members-title br{display:inline}
+  .ee-members-rule{display:block}
+}
+@media (prefers-reduced-motion:reduce){
+  .ee-about-photo img,.ee-members-track{animation:none}
+}
+
+/* Our Numbers: the Personal Injury scroll layout from localhost:3000 (.pis), in E&E colours. */
+.ee-nums{background:#1d2653;color:#ffffff;padding:clamp(64px,8vw,120px) 0;overflow-x:clip}
+.ee-nums-in{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut);display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(40px,5vw,72px)}
+.ee-nums-side{align-self:stretch}
+.ee-nums-sticky{position:sticky;top:calc(var(--hdr) + 32px);padding-bottom:24px}
+.ee-nums-eyebrow{margin:0 0 20px;display:flex;align-items:center;gap:16px;font:600 14px/1.4 Jost,Futura,Arial,sans-serif;letter-spacing:0.18em;text-transform:uppercase;color:#d4af37}
+.ee-nums-eyebrow::before{content:"";width:48px;height:2px;background:#d4af37}
+.ee-nums-title{margin:0;font:500 clamp(38px,4.6vw,84px)/1 Jost,Futura,Arial,sans-serif;letter-spacing:-0.03em;text-transform:uppercase;color:#ffffff}
+.ee-nums-title span{display:block}
+.ee-nums-intro{margin:14px 0 0;max-width:52ch;font-size:17px;line-height:1.6;color:rgba(255,255,255,0.7)}
+.ee-nums-active{display:grid;min-height:40px;margin-top:28px}
+.ee-nums-panel{grid-area:1/1;align-self:start}
+.ee-nums-label{display:block;font:400 clamp(26px,2.6vw,46px)/1.15 Jost,Futura,Arial,sans-serif;letter-spacing:-0.01em;color:#ffffff}
+.ee-nums-media{display:grid;gap:16px;margin-right:calc(-1 * (max(0px,(100vw - var(--wrap)) / 2) + var(--gut)))}
+.ee-nums-card{margin:0}
+.ee-nums-shot{position:relative;height:min(26vh,230px);min-height:170px;overflow:hidden;border-left:3px solid transparent;transition:background .6s cubic-bezier(.22,.61,.36,1),border-color .6s cubic-bezier(.22,.61,.36,1)}
+/* Big faint, tilted copy of the stat on the right of each box. It turns and slides into place on the active box. */
+.ee-nums-ghost{position:absolute;right:clamp(12px,2vw,40px);top:50%;transform-origin:100% 50%;white-space:nowrap;font:900 clamp(90px,8vw,160px)/0.8 'Arial Black','Arial Bold',Arial,sans-serif;letter-spacing:-0.03em;font-variant-numeric:lining-nums tabular-nums;pointer-events:none;user-select:none;transition:color .8s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)}
+.ee-nums-fig{position:relative;height:100%;display:flex;flex-direction:column;justify-content:center;padding:clamp(24px,3vw,48px);transition:opacity .55s cubic-bezier(.22,.61,.36,1),transform .65s cubic-bezier(.22,.61,.36,1)}
+.ee-nums-count{position:absolute;top:clamp(20px,2.4vw,36px);left:clamp(24px,3vw,48px);font:600 12px/1 Jost,Futura,Arial,sans-serif;letter-spacing:0.16em;color:#e0c988}
+.ee-nums-big{display:block;font:900 clamp(38px,3.8vw,72px)/1 'Arial Black','Arial Bold',Arial,sans-serif;color:#d4af37;text-shadow:0 4px 30px rgba(0,0,0,0.35);font-variant-numeric:lining-nums tabular-nums}
+.ee-nums-cardlabel{display:block;margin-top:8px;font:500 clamp(16px,1.25vw,21px)/1.25 Jost,Futura,Arial,sans-serif;color:#ffffff}
+/* Shorter screens: tighten the left side so the whole numbered list stays on screen. */
+@media (min-width:921px) and (max-height:860px){
+  .ee-nums-sticky{top:calc(var(--hdr) + 16px)}
+  .ee-nums-eyebrow{margin-bottom:12px}
+  .ee-nums-active{margin-top:20px}
+}
+@media (max-width:920px){
+  .ee-nums-in{grid-template-columns:1fr;gap:32px}
+  .ee-nums-sticky{position:static;padding-bottom:0}
+  .ee-nums-active{display:none}
+  .ee-nums-media{gap:40px;margin:0 calc(-1 * var(--gut))}
+  .ee-nums-shot{height:auto;min-height:0;padding:8px 0;background:rgba(255,255,255,0.05) !important;border-color:#d4af37 !important}
+  .ee-nums-fig{opacity:1 !important;transform:none !important}
+  .ee-nums-count{position:static;display:block;margin-bottom:12px}
+}
+/* Phones: no tilted shadow number in the boxes. */
+@media (max-width:699px){
+  .ee-nums-ghost{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .ee-nums-fig{transform:none !important}
+}
 </style>
 </helmet>
 
@@ -104,23 +211,83 @@ a:hover{color:#d4af37}
         <span ref="{{ refs.l3 }}" style="font:400 clamp(17px,1.75vw,35px)/1.25 Jost,Futura,Arial,sans-serif;color:#1d2653;text-transform:none;letter-spacing:0;margin-top:0.39em;margin-left:0.44vw;max-width:{{ subMax }}">Nationally Recognized Forensic Accountants</span>
       </h1>
     </div>
+  </section>
 
-    <div ref="{{ refs.band }}" style="position:relative;width:100%">
-      <div style="max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)">
-        <h2 style="margin:0;display:inline-flex;align-items:center;background:rgba(212,175,55,0.93);color:#293995;font:600 clamp(16px,2.05vw,40px)/1 Jost,Futura,Arial,sans-serif;text-transform:uppercase;letter-spacing:-0.01em;padding:clamp(12px,1.2vw,17px) clamp(26px,3vw,44px) clamp(11px,1.1vw,15px) clamp(8px,0.65vw,12px);border-radius:0 clamp(14px,1.5vw,26px) 0 0">Our Numbers Do the Talking</h2>
+  <!-- Our numbers, in the Personal Injury layout from localhost:3000: the left side (active panel +
+       numbered list) stays put while the stat cards on the right scroll by. -->
+  <section class="ee-nums" data-screen-label="Our Numbers" aria-labelledby="nums-title">
+    <div class="ee-nums-in">
+      <div class="ee-nums-side">
+        <div class="ee-nums-sticky">
+          <p class="ee-nums-eyebrow">By the Numbers</p>
+          <h2 id="nums-title" class="ee-nums-title"><span>Our Numbers</span> <span>Do the Talking</span></h2>
+          <div class="ee-nums-active">
+            <sc-for list="{{ nums }}" as="p" hint-placeholder-count="6">
+              <div class="ee-nums-panel" aria-hidden="{{ p.hidden }}" style="opacity:{{ p.pOp }};visibility:{{ p.pVis }};transform:{{ p.pT }};transition:{{ p.pTrans }}">
+                <span class="ee-nums-label">{{ p.label }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
       </div>
-      <div style="background:linear-gradient(90deg,rgba(52,63,145,0.93) 0%,rgba(52,63,145,0.93) 76%,rgba(52,58,113,0.93) 88%,rgba(34,38,81,0.93) 100%)">
-        <div style="max-width:var(--wrap);margin:0 auto;padding:{{ bandPad }}">
-          <div>
-            <ul ref="{{ refs.stats }}" style="list-style:none;margin:0;margin-right:{{ statExtend }};padding:{{ statPad }};display:grid;grid-template-columns:{{ statCols }}">
-              <sc-for list="{{ stats }}" as="s" hint-placeholder-count="6">
-                <li data-stat="" style="display:flex;margin:{{ cellM }};border-left:{{ s.divL }};border-top:{{ s.divT }}">
-                  <a href="{{ s.href }}" onMouseEnter="{{ s.enter }}" onMouseLeave="{{ statLeave }}" onFocus="{{ s.enter }}" onBlur="{{ statLeave }}" aria-label="{{ s.aria }}" style="position:relative;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;gap:{{ cellGap }};padding:{{ cellPad }};color:#ffffff;opacity:{{ s.op }};background:{{ s.bg }};transition:background .4s ease,opacity .4s ease;outline-offset:-3px">
-                    <strong style="font:900 {{ numSize }}/1 'Arial Black','Arial Bold',Arial,sans-serif;color:#d4af37;letter-spacing:0;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap;transform:{{ s.numT }};text-shadow:{{ s.glow }};transition:transform .5s cubic-bezier(.2,.8,.2,1),text-shadow .5s ease">{{ s.display }}</strong>
-                    <span style="font:{{ labelFont }};color:#ffffff;white-space:{{ labelWS }};max-width:{{ labelMax }};text-wrap:balance">{{ s.text }}</span>                  </a>
-                </li>
-              </sc-for>
-            </ul>
+      <div ref="{{ refs.nums }}" class="ee-nums-media">
+        <sc-for list="{{ nums }}" as="p" hint-placeholder-count="6">
+          <figure data-card="" class="ee-nums-card">
+            <div class="ee-nums-shot" style="background:{{ p.cardBg }};border-color:{{ p.cardLine }}">
+              <span class="ee-nums-ghost" aria-hidden="true" style="color:{{ p.ghost }};transform:{{ p.ghostT }}">{{ p.final }}</span>
+              <div class="ee-nums-fig" style="opacity:{{ p.figOp }};transform:{{ p.figT }}">
+                <span class="ee-nums-count">{{ p.no }} / 06</span>
+                <strong class="ee-nums-big">{{ p.final }}</strong>
+                <span class="ee-nums-cardlabel">{{ p.label }}</span>
+              </div>
+            </div>
+          </figure>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="ee-about" data-screen-label="About the Firm" aria-labelledby="intro-title">
+    <div class="ee-about-grid">
+      <div>
+        <p class="ee-about-eyebrow">About the Firm</p>
+        <h2 id="intro-title">
+          <span class="ee-about-big">From Strategy</span>
+          <span class="ee-about-big">to <em>Testimony.</em></span>
+          <span class="ee-about-sub">Los Angeles Forensic Accounting Experts</span>
+        </h2>
+        <div class="ee-about-copy">
+          <p class="ee-about-lead">Established in Los Angeles in 1994, <strong style="font-weight:600">Engel &amp; Engel LLP</strong> provides forensic accounting and advisory services in complex business litigation matters across California and nationwide.</p>
+          <p>We provide litigation support for plaintiffs and defendants in matters involving fraud investigations, economic damages, business valuation, bankruptcy and insolvency, and other financial matters.</p>
+          <p>Engel &amp; Engel delivers industry-leading forensic accounting analysis and clear, defensible expert testimony in high-stakes matters nationwide. Engel &amp; Engel’s forensic analysis has supported billions of dollars in court awards and defenses, and its professionals have been recognized nationally, including Forbes’ 2025 Top Valuation CPAs.</p>
+        </div>
+        <a class="ee-about-btn" href="/team">Meet the Team<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></a>
+      </div>
+      <div class="ee-about-media">
+        <div class="ee-about-frame">
+          <div class="ee-about-photo">
+            <img src="assets/forensic-accounting-experts.webp" alt="Downtown Los Angeles office towers" width="871" height="906" loading="lazy" decoding="async">
+            <div class="ee-about-est"><span>Est.</span><strong>1994</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ee-members">
+      <div class="ee-members-in">
+        <p class="ee-members-title">Professional<br> Memberships</p>
+        <span class="ee-members-rule" aria-hidden="true"></span>
+        <div class="ee-members-view">
+          <div class="ee-members-track">
+            <img class="m-aicpa" src="assets/memberships/aicpa.png" alt="AICPA – American Institute of CPAs" loading="lazy">
+            <img class="m-calcpa" src="assets/memberships/calcpa.png" alt="CalCPA – California Society of CPAs" loading="lazy">
+            <img class="m-acfe" src="assets/memberships/acfe.png" alt="ACFE – Association of Certified Fraud Examiners" loading="lazy">
+            <img class="m-aira" src="assets/memberships/aira.png" alt="AIRA – Association of Insolvency &amp; Restructuring Advisors" loading="lazy">
+            <img class="m-nacva" src="assets/memberships/nacva.png" alt="NACVA – National Association of Certified Valuators and Analysts" loading="lazy">
+            <img class="m-aicpa" src="assets/memberships/aicpa.png" alt="" aria-hidden="true" loading="lazy">
+            <img class="m-calcpa" src="assets/memberships/calcpa.png" alt="" aria-hidden="true" loading="lazy">
+            <img class="m-acfe" src="assets/memberships/acfe.png" alt="" aria-hidden="true" loading="lazy">
+            <img class="m-aira" src="assets/memberships/aira.png" alt="" aria-hidden="true" loading="lazy">
+            <img class="m-nacva" src="assets/memberships/nacva.png" alt="" aria-hidden="true" loading="lazy">
           </div>
         </div>
       </div>
@@ -128,10 +295,10 @@ a:hover{color:#d4af37}
   </section>
 </main>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;introAnimation&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;trailMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Stays lit&quot;,&quot;Passes by&quot;],&quot;default&quot;:&quot;Stays lit&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;countUp&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;introAnimation&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;trailMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Stays lit&quot;,&quot;Passes by&quot;],&quot;default&quot;:&quot;Stays lit&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
 class Component extends DCLogic {
-  state = { hover: -1, navHover: -1, w: null, menu: false, countT: null };
-  refs = { bg: React.createRef(), glow: React.createRef(), line: React.createRef(), headGlow: React.createRef(), headCore: React.createRef(), l1: React.createRef(), l2: React.createRef(), l3: React.createRef(), band: React.createRef(), stats: React.createRef() };
+  state = { pi: 0, navHover: -1, w: null, menu: false };
+  refs = { nums: React.createRef(), bg: React.createRef(), glow: React.createRef(), line: React.createRef(), headGlow: React.createRef(), headCore: React.createRef(), l1: React.createRef(), l2: React.createRef(), l3: React.createRef() };
   anims = []; timers = [];
 
   NAV = [
@@ -143,15 +310,23 @@ class Component extends DCLogic {
     { label: 'Contact', href: '/contact' }
   ];
   STATS = [
-    { label: 'Years of Forensic Accounting Practice', lines: 'Years of Forensic\nAccounting Practice', href: '/#about', to: 30, suffix: '+', final: '30+' },
-    { label: 'Forensic Accounting Cases', lines: 'Forensic Accounting\nCases', href: '/cases', to: 1000, suffix: '+', comma: true, final: '1,000+' },
-    { label: 'Research Publications', lines: 'Research\nPublications', href: '/publications', to: 20, final: '20' },
-    { label: 'Professional Certifications', lines: 'Professional\nCertifications', href: '/#certifications', to: 6, final: '6' },
-    { label: 'Forensic Experience', href: '/team', final: 'BIG 4', text: true },
-    { label: 'Jury Award', href: '/cases', to: 2.3, dec: 1, prefix: '$', suffix: 'B', final: '$2.3B' }
+    { label: 'Years of Forensic Accounting Practice', href: '/#about', final: '30+' },
+    { label: 'Forensic Accounting Cases', href: '/cases', final: '1,000+' },
+    { label: 'Research Publications', href: '/publications', final: '20' },
+    { label: 'Professional Certifications', href: '/#certifications', final: '6' },
+    { label: 'Forensic Experience', href: '/team', final: 'BIG 4' },
+    { label: 'Jury Award', href: '/cases', final: '$2.3B' }
   ];
-  // Stat cards load one by one: the next card rises in only after the previous one finishes counting.
-  COUNT_START = 4200; COUNT_DUR = 1900; COUNT_STAGGER = 1900;
+
+  // Like the Personal Injury list: the active item is the last card whose top has passed the middle of the screen.
+  onScroll = () => {
+    const box = this.refs.nums.current;
+    if (!box) return;
+    const line = window.innerHeight * 0.5;
+    let i = 0;
+    box.querySelectorAll('[data-card]').forEach((c, k) => { if (c.getBoundingClientRect().top < line) i = k; });
+    if (i !== this.state.pi) this.setState({ pi: i });
+  };
 
   // Measure the hero so the photo and the gold-line SVG can be placed together (see artBox).
   // Also measures the three headline lines (layout boxes, ignoring the intro transforms).
@@ -172,10 +347,7 @@ class Component extends DCLogic {
         this.trail = Array.from({ length: 301 }, (_, i) => { const q = p.getPointAtLength(L * i / 300); return { x: q.x, y: q.y }; });
       }
     }
-    // Top of the blue numbers band (layout position, ignoring the intro slide-in).
-    let bandTop = null, e = this.refs.band.current && this.refs.band.current.children[1];
-    if (e && sec) { bandTop = 0; while (e && e !== sec) { bandTop += e.offsetTop; e = e.offsetParent; } }
-    this.setState({ w: window.innerWidth, bw: b ? b.clientWidth : null, bh: b ? b.clientHeight : null, lines, bandTop });
+    this.setState({ w: window.innerWidth, bw: b ? b.clientWidth : null, bh: b ? b.clientHeight : null, lines });
   };
 
   // Gap (px) between the headline lines and the gold trail's glow, for a given photo box.
@@ -198,14 +370,10 @@ class Component extends DCLogic {
   // If the headline would touch the bridge at this screen size, slide the photo (then zoom it,
   // anchored top-left) just enough to keep the bridge clear of the text.
   artBox(width) {
-    const { bw, bh, lines, bandTop } = this.state;
+    const { bw, bh, lines } = this.state;
     if (!bw || !bh) return null;
     const desktop = width >= 700;
-    // Phones and portrait tablets: the numbers band covers the bottom of the hero, so fit the
-    // photo to the area above the band instead of the whole hero. This zooms the photo out and
-    // shows more of the freeway (top deck to pillars). A matching colour fills behind the band.
-    const tall = width < 1000 && bh > bw * 0.75 && bandTop > 0;
-    const fitH = tall ? Math.min(bh, bandTop) : bh;
+    const fitH = bh;
     const s = Math.max(bw / 2400, fitH / 1602), dw = 2400 * s, dh = 1602 * s;
     // Phones: show the photo 34.8% across its hidden width (-270.76px at 390 wide).
     const x = desktop ? 0 : 0.3478 * (bw - dw);
@@ -213,11 +381,11 @@ class Component extends DCLogic {
     // show (the client-approved framing, seen at a 1195x741 window).
     // The photo is squashed vertically to set sizes: 1093x630 at 1093 wide, 1366x800 at 1366 wide
     // (blended in between, held beyond). The gold line is stretched the same way.
-    // The photo always reaches the bottom of the hero (no hard edge behind the numbers band).
+    // The photo always reaches the bottom of the hero.
     const t = Math.min(1, Math.max(0, (bw - 1093) / (1366 - 1093)));
     const SQUASH = (630 / (1602 * 1093 / 2400)) * (1 - t) + (800 / (1602 * 1366 / 2400)) * t;
-    const h = tall ? dh : Math.max(dh * SQUASH, bh);
-    const y = tall ? fitH - h : desktop ? bh - h : (bh - h) / 2;
+    const h = Math.max(dh * SQUASH, bh);
+    const y = desktop ? bh - h : (bh - h) / 2;
     const base = { x, y, w: dw, h };
     if (!this.trail || !lines || !lines.length) return base;
     const key = [bw, bh, desktop, fitH, ...lines.map(r => [r.l, r.t, r.r, r.b].join(','))].join('|');
@@ -242,14 +410,16 @@ class Component extends DCLogic {
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this.onResize());
     window.addEventListener('resize', this.onResize);
     if (window.ResizeObserver && this.refs.bg.current) { this.ro = new ResizeObserver(this.onResize); this.ro.observe(this.refs.bg.current); }
+    window.addEventListener('scroll', this.onScroll, { passive: true });
     this.play();
+    this.onScroll();
   }
-  componentWillUnmount() { window.removeEventListener('resize', this.onResize); if (this.ro) this.ro.disconnect(); this.stop(); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); window.removeEventListener('scroll', this.onScroll); if (this.ro) this.ro.disconnect(); this.stop(); }
   componentDidUpdate(p) {
     // The headline moves when the layout switches between desktop and tablet/phone; re-measure it.
     const small = (this.state.w ?? 1440) < 900;
     if (this._small !== small) { this._small = small; this.onResize(); }
-    if (p.introAnimation !== this.props.introAnimation || p.trailMode !== this.props.trailMode || p.countUp !== this.props.countUp) this.play();
+    if (p.introAnimation !== this.props.introAnimation || p.trailMode !== this.props.trailMode) this.play();
   }
 
   stop() {
@@ -264,7 +434,7 @@ class Component extends DCLogic {
     const on = this.props.introAnimation ?? true;
     const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     ['line', 'glow'].forEach(k => { const e = el(k); if (e) { e.removeAttribute('stroke-dasharray'); e.style.strokeDashoffset = ''; } });
-    if (!on || reduced) { this.setState({ countT: null }); return; }
+    if (!on || reduced) return;
 
     const A = (e, kf, o) => { if (!e || !e.animate) return; const a = e.animate(kf, Object.assign({ fill: 'both' }, o)); this.anims.push(a); return a; };
     const ease = 'cubic-bezier(.16,1,.3,1)';
@@ -294,56 +464,24 @@ class Component extends DCLogic {
       A(e, [{ strokeDashoffset: H, opacity: 0 }, { opacity: 1, offset: 0.06 }, { opacity: 1, offset: 0.9 }, { strokeDashoffset: -L, opacity: 0 }], { duration: TD, delay: T0, easing: drive });
     });
     if (!passes) A(el('glow'), [{ opacity: 0.35 }, { opacity: 0.7, offset: 0.4 }, { opacity: 0.35 }], { duration: 1400 * S, delay: T0 + TD - 200 * S, easing: 'ease-in-out', composite: 'replace' });
-
-    // Boom — the numbers band rises
-    const B0 = 3150 * S;
-    A(el('band'), [{ transform: 'translateY(105%)' }, { transform: 'none' }], { duration: 950 * S, delay: B0, easing: ease });
-    const lis = el('stats') ? el('stats').querySelectorAll('[data-stat]') : [];
-    lis.forEach((li, i) => A(li, [{ opacity: 0, transform: 'translateY(24px)' }, { opacity: 1, transform: 'none' }], { duration: 700 * S, delay: B0 + 300 * S + i * this.COUNT_STAGGER, easing: ease }));
-
-    if (this.props.countUp ?? true) {
-      this.setState({ countT: 0 });
-      const t0 = performance.now();
-      const tick = now => {
-        const t = now - t0;
-        this.setState({ countT: t });
-        if (t < this.COUNT_START + this.COUNT_STAGGER * 6 + this.COUNT_DUR) this.raf = requestAnimationFrame(tick);
-        else this.setState({ countT: null });
-      };
-      this.raf = requestAnimationFrame(tick);
-      this.timers.push(setTimeout(() => { cancelAnimationFrame(this.raf); this.setState({ countT: null }); }, this.COUNT_START + this.COUNT_STAGGER * 6 + this.COUNT_DUR + 400));
-    } else this.setState({ countT: null });
-  }
-
-  fmt(s, i) {
-    const t = this.state.countT;
-    if (t === null || s.text) return s.final;
-    const p = Math.min(1, Math.max(0, (t - this.COUNT_START - i * this.COUNT_STAGGER) / this.COUNT_DUR));
-    const e = 1 - Math.pow(1 - p, 3);
-    let v = s.to * e;
-    let str = s.dec ? v.toFixed(s.dec) : String(Math.round(v));
-    if (s.comma) str = Math.round(v).toLocaleString('en-US');
-    return (s.prefix || '') + str + (s.suffix || '');
   }
 
   renderVals() {
-    const { hover, navHover, w, menu } = this.state;
+    const { pi, navHover, w, menu } = this.state;
+    const ease = 'cubic-bezier(.22,.61,.36,1)';
     const width = w ?? 1440;
     const showNav = width >= 1100;
-    const wide = width >= 1000, cols = wide ? 6 : width >= 600 ? 3 : 2;
-    const setHover = i => () => this.setState({ hover: i });
     return {
       refs: this.refs,
       ...(() => {
         const a = this.artBox(width), px = n => n.toFixed(2) + 'px';
         if (!a) return { photoFill: 'none', bgSize: 'cover', bgPos: width >= 700 ? '0% 50%' : '50% 50%', svgAlign: width >= 700 ? 'xMinYMid slice' : 'xMidYMid slice', art: { x: '0px', y: '0px', w: '100%', h: '100%' } };
-        return { // Phones/tablets: below the photo (behind the numbers band) fill with the band's own blue gradient.
-        photoFill: a.h < (this.state.bh || 0) - 0.5 ? 'linear-gradient(90deg,rgba(52,63,145,0.93) 0%,rgba(52,63,145,0.93) 76%,rgba(52,58,113,0.93) 88%,rgba(34,38,81,0.93) 100%)' : 'none', bgSize: px(a.w) + ' ' + px(a.h), bgPos: px(a.x) + ' ' + px(a.y), svgAlign: 'none', art: { x: px(a.x), y: px(a.y), w: px(a.w), h: px(a.h) } };
+        return { photoFill: 'none', bgSize: px(a.w) + ' ' + px(a.h), bgPos: px(a.x) + ' ' + px(a.y), svgAlign: 'none', art: { x: px(a.x), y: px(a.y), w: px(a.w), h: px(a.h) } };
       })(),
-      // Tablets and phones: drop the headline down out of the empty sky, closer to the bridge.
       // Phones: two-line subtitle so it stays left of the gold trail.
+      // Tablets: headline near the top of the hero, like phones and desktop.
       subMax: width < 700 ? '200px' : 'none',
-      heroPadT: width < 700 ? '28px' : width < 900 ? 'clamp(24px,22svh,260px)' : 'clamp(24px,min(3.78vw,7vh),76px)',
+      heroPadT: width < 700 ? '28px' : width < 900 ? 'clamp(28px,5vw,48px)' : 'clamp(24px,min(3.78vw,7vh),76px)',
       showNav,
       showBurger: !showNav,
       showPillText: width >= 640,
@@ -355,35 +493,26 @@ class Component extends DCLogic {
       toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
       navLeave: () => this.setState({ navHover: -1 }),
       nav: this.NAV.map((n, i) => ({ ...n, enter: () => this.setState({ navHover: i }), rule: navHover === i ? '100%' : '0%' })),
-      statPad: width >= 1000 ? '0 1.9vw 0 1.46vw' : '0',
-      labelWS: width >= 1000 ? 'pre-line' : 'normal',
-      labelMax: width >= 1000 ? 'none' : '150px',
-      // Screens wider than the 1920px layout: let the stats run into the right margin so the big numbers get room.
-      statExtend: wide ? 'min(0px, calc((1920px - 100vw) / 2))' : '0',
-      statCols: wide ? 'repeat(6,minmax(max-content,1fr))' : `repeat(${cols},minmax(0,1fr))`,
-      // Numbers band sizing: desktop follows the approved PDF; tablets and phones get larger Jost labels.
-      bandPad: wide ? 'clamp(8px,0.95vw,14px) var(--gut) clamp(8px,0.8vw,16px)' : width >= 420 ? '4px var(--gut) 6px' : '2px var(--gut) 4px',
-      cellM: wide ? 'clamp(6px,0.6vw,12px) 0' : '0',
-      cellPad: wide ? 'clamp(6px,0.8vw,14px) 12px' : width >= 600 ? '18px 12px' : width >= 420 ? '16px 8px' : '10px 6px',
-      cellGap: wide ? 'clamp(2px,0.15vw,4px)' : width >= 420 ? '6px' : '3px',
-      numSize: wide ? 'clamp(30px,3.2vw,62px)' : width >= 600 ? '32px' : width >= 420 ? '28px' : '26px',
-      labelFont: wide ? '400 clamp(13px,1.083vw,20px)/1.28 Arial,Helvetica,sans-serif' : (width >= 600 ? '400 14px' : '400 13px') + '/1.3 Jost,Futura,Arial,sans-serif',
-      statLeave: () => this.setState({ hover: -1 }),
-      stats: this.STATS.map((s, i) => {
-        const on = hover === i, dim = hover !== -1 && !on;
-        const line = '1px solid rgba(255,255,255,0.18)';
+      // "Our Numbers" section: same timings as the Personal Injury panels (.pis__panel / .pis__index).
+      nums: this.STATS.map((s, i) => {
+        const on = pi === i;
         return {
-          ...s,
-          divL: i % cols ? line : '0',
-          divT: i >= cols ? line : '0',
-          display: this.fmt(s, i),
-          text: width >= 1000 && s.lines ? s.lines : s.label,
-          aria: `${s.final} ${s.label} — learn more`,
-          enter: setHover(i),
-          op: dim ? 0.6 : 1,
-          bg: 'transparent',
-          numT: on ? 'translateY(-4px) scale(1.07)' : 'none',
-          glow: on ? '0 0 26px rgba(212,175,55,0.5)' : '0 0 0 rgba(212,175,55,0)'
+          no: String(i + 1).padStart(2, '0'),
+          final: s.final,
+          label: s.label,
+          href: s.href,
+          hidden: on ? 'false' : 'true',
+          pOp: on ? 1 : 0,
+          pVis: on ? 'visible' : 'hidden',
+          pT: on ? 'none' : 'translate3d(0,12px,0)',
+          pTrans: on ? `opacity .55s ${ease} 80ms,transform .65s ${ease} 80ms,visibility 0s` : `opacity .45s ${ease},transform .55s ${ease},visibility 0s .55s`,
+          // Cards: the active number is full strength; the others are faded and sit a little lower.
+          cardBg: on ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.02)',
+          cardLine: on ? '#d4af37' : 'transparent',
+          ghost: on ? 'rgba(212,175,55,0.2)' : 'rgba(255,255,255,0.04)',
+          ghostT: on ? 'translateY(-50%) rotate(-8deg)' : 'translate(40px,-50%) rotate(-18deg)',
+          figOp: on ? 1 : 0.3,
+          figT: on ? 'none' : 'translate3d(0,12px,0) scale(0.97)'
         };
       })
     };
