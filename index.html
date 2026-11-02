@@ -105,7 +105,8 @@ html body #dc-root,html body #dc-root>.sc-host{height:auto;min-height:100%}
 .ee-nums-active{display:grid;min-height:40px;margin-top:28px}
 .ee-nums-panel{grid-area:1/1;align-self:start}
 .ee-nums-label{display:block;font:400 clamp(26px,2.6vw,46px)/1.15 Jost,Futura,Arial,sans-serif;letter-spacing:-0.01em;color:#ffffff}
-.ee-nums-media{display:grid;gap:16px;margin-right:calc(-1 * (max(0px,(100vw - var(--wrap)) / 2) + var(--gut)))}
+.ee-nums-view{margin-right:calc(-1 * (max(0px,(100vw - var(--wrap)) / 2) + var(--gut)))}
+.ee-nums-media{display:grid;gap:16px}
 .ee-nums-card{margin:0}
 .ee-nums-shot{position:relative;height:min(26vh,230px);min-height:170px;overflow:hidden;border-left:3px solid transparent;transition:background .6s cubic-bezier(.22,.61,.36,1),border-color .6s cubic-bezier(.22,.61,.36,1)}
 /* Big faint, tilted copy of the stat on the right of each box. It turns and slides into place on the active box. */
@@ -119,21 +120,34 @@ html body #dc-root,html body #dc-root>.sc-host{height:auto;min-height:100%}
 @media (min-width:921px){
   .ee-nums{padding:0}
   .ee-nums-pin{position:sticky;top:var(--hdr);height:calc(100vh - var(--hdr));height:calc(100svh - var(--hdr));overflow:hidden;box-sizing:border-box;padding:clamp(40px,7vh,96px) 0}
-  .ee-nums-in{height:100%}
+  .ee-nums-in{height:100%;grid-template-rows:minmax(0,100%)}
   .ee-nums-sticky{position:static}
-  .ee-nums-media{align-self:start;will-change:transform}
+  /* A window exactly two cards tall, centred beside the title; the cards slide up inside it. */
+  .ee-nums-in{--nh:clamp(140px,19vh,180px);--nv:calc(2 * var(--nh) + 16px)}
+  .ee-nums-view{align-self:center;height:var(--nv);overflow:hidden}
+  .ee-nums-media{will-change:transform}
+  .ee-nums-shot{height:var(--nh);min-height:0}
+  /* Tighter boxes: smaller padding, count tucked into the top corner. */
+  .ee-nums-fig{padding:30px clamp(20px,2vw,32px) 12px}
+  .ee-nums-count{top:16px;left:clamp(20px,2vw,32px)}
+  .ee-nums-big{font-size:clamp(34px,3.2vw,58px)}
+  /* The left side is exactly as tall as the two cards: title at the top, active name at the bottom. */
+  .ee-nums-side{align-self:center;height:var(--nv);display:flex;flex-direction:column}
+  .ee-nums-sticky{flex:1;display:flex;flex-direction:column;padding-bottom:0}
+  .ee-nums-active{margin-top:auto;padding-top:12px}
 }
 /* Shorter screens: tighten the left side so the whole numbered list stays on screen. */
 @media (min-width:921px) and (max-height:860px){
   .ee-nums-sticky{top:calc(var(--hdr) + 16px)}
   .ee-nums-eyebrow{margin-bottom:12px}
-  .ee-nums-active{margin-top:20px}
+  .ee-nums-title{font-size:clamp(34px,4vw,64px)}
 }
 @media (max-width:920px){
   .ee-nums-in{grid-template-columns:1fr;gap:32px}
   .ee-nums-sticky{position:static;padding-bottom:0}
   .ee-nums-active{display:none}
-  .ee-nums-media{gap:40px;margin:0 calc(-1 * var(--gut))}
+  .ee-nums-view{margin:0 calc(-1 * var(--gut))}
+  .ee-nums-media{gap:40px}
   .ee-nums-shot{height:auto;min-height:0;padding:8px 0;background:rgba(255,255,255,0.05) !important;border-color:#d4af37 !important}
   .ee-nums-fig{opacity:1 !important;transform:none !important}
   .ee-nums-count{position:static;display:block;margin-bottom:12px}
@@ -240,6 +254,7 @@ html body #dc-root,html body #dc-root>.sc-host{height:auto;min-height:100%}
           </div>
         </div>
       </div>
+      <div class="ee-nums-view">
       <div ref="{{ refs.nums }}" class="ee-nums-media">
         <sc-for list="{{ nums }}" as="p" hint-placeholder-count="6">
           <figure data-card="" class="ee-nums-card">
@@ -253,6 +268,7 @@ html body #dc-root,html body #dc-root>.sc-host{height:auto;min-height:100%}
             </div>
           </figure>
         </sc-for>
+      </div>
       </div>
     </div>
     </div>
@@ -336,15 +352,33 @@ class Component extends DCLogic {
     const sec = this.refs.numsSec.current, pin = this.refs.numsPin.current, box = this.refs.nums.current;
     if (!sec || !pin || !box) return;
     box.style.transform = '';
-    if (window.innerWidth < 921) { sec.style.height = ''; this.numsDist = 0; return; }
-    const pinH = pin.clientHeight, padB = parseFloat(getComputedStyle(pin).paddingBottom) || 0;
-    const top = box.getBoundingClientRect().top - pin.getBoundingClientRect().top;
-    this.numsDist = Math.max(0, Math.round(top + box.offsetHeight - (pinH - padB)));
-    // Pause at the start so the section rests on the first card ("Years of Forensic Accounting
-    // Practice") before the cards move, and a little at the end so the last card gets its turn.
-    this.numsLead = Math.round(pinH * 0.5);
-    this.numsHold = Math.round(pinH * 0.25);
-    sec.style.height = (pinH + this.numsLead + this.numsDist + this.numsHold) + 'px';
+    if (this.numsRaf) { cancelAnimationFrame(this.numsRaf); this.numsRaf = null; }
+    if (window.innerWidth < 921) { sec.style.height = ''; this.numsDist = 0; this.numsTo = null; return; }
+    // The cards slide up inside their two-card window until the last card reaches its bottom.
+    const pinH = pin.clientHeight, view = box.parentElement;
+    this.numsDist = Math.max(0, Math.round(box.offsetHeight - view.clientHeight));
+    // Each card gets the same stretch of scrolling (numsStep). A short pause at the start rests on
+    // the first card, and one at the end gives the last card its turn before the page moves on.
+    const cardEls = box.querySelectorAll('[data-card]');
+    this.numsN = cardEls.length;
+    // Distance from one card to the next, so every stop shows whole cards (two in the frame).
+    this.numsPitch = cardEls.length > 1 ? cardEls[1].offsetTop - cardEls[0].offsetTop : 0;
+    this.numsStep = Math.round(pinH * 0.5);
+    this.numsLead = Math.round(pinH * 0.3);
+    this.numsHold = Math.round(pinH * 0.3);
+    this.numsY = null;
+    sec.style.height = (pinH + this.numsLead + (this.numsN - 1) * this.numsStep + this.numsHold) + 'px';
+  };
+
+  // Moves the cards toward their target a little each frame, so wheel ticks glide instead of jumping.
+  numsTick = () => {
+    this.numsRaf = null;
+    const box = this.refs.nums.current;
+    if (!box || this.numsTo == null) return;
+    const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const d = this.numsTo - (this.numsY ?? this.numsTo);
+    this.numsY = reduced || this.numsY == null || Math.abs(d) < 0.3 ? this.numsTo : this.numsY + d * 0.14;
+    box.style.transform = 'translate3d(0,' + (-this.numsY).toFixed(2) + 'px,0)';    if (this.numsY !== this.numsTo) this.numsRaf = requestAnimationFrame(this.numsTick);
   };
 
   onScroll = () => {
@@ -353,11 +387,19 @@ class Component extends DCLogic {
     const cards = box.querySelectorAll('[data-card]');
     let i = 0;
     if (this.numsDist > 0 && sec && pin) {
-      const run = this.numsDist + this.numsHold;
-      const done = Math.min(run, Math.max(0, pin.getBoundingClientRect().top - sec.getBoundingClientRect().top - this.numsLead));
-      box.style.transform = 'translate3d(0,' + (-Math.min(done, this.numsDist)) + 'px,0)';
-      // First card stays active through the opening pause; the rest take turns as the cards move.
-      i = done <= 0 ? 0 : Math.min(cards.length - 1, 1 + Math.floor(done / run * (cards.length - 1)));
+      // One card at a time: in each card's stretch the cards rest for the first part, then ease
+      // over to the next card. At rest the active card sits in the top slot with the next one
+      // below it; the last card simply lights up in the bottom slot.
+      const n = this.numsN, HOLD = 0.3;
+      const done = Math.max(0, pin.getBoundingClientRect().top - sec.getBoundingClientRect().top - this.numsLead);
+      const t = Math.min(n - 1, done / this.numsStep), j = Math.min(n - 2, Math.floor(t)), f = t - j;
+      const g = f <= HOLD ? 0 : (f - HOLD) / (1 - HOLD);
+      const ease = g < 0.5 ? 4 * g * g * g : 1 - Math.pow(-2 * g + 2, 3) / 2;
+      const pos = j + ease;
+      i = Math.round(pos);
+      const rest = k => Math.min(this.numsDist, Math.min(k, n - 2) * this.numsPitch);
+      this.numsTo = rest(j) + (rest(j + 1) - rest(j)) * ease;
+      if (!this.numsRaf) this.numsRaf = requestAnimationFrame(this.numsTick);
     } else {
       // Phones and tablets: the active item is the last card whose top has passed the middle of the screen.
       const line = window.innerHeight * 0.5;
@@ -454,7 +496,7 @@ class Component extends DCLogic {
     this.play();
     this.onScroll();
   }
-  componentWillUnmount() { window.removeEventListener('resize', this.onResize); window.removeEventListener('scroll', this.onScroll); if (this.ro) this.ro.disconnect(); this.stop(); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); window.removeEventListener('scroll', this.onScroll); if (this.ro) this.ro.disconnect(); if (this.numsRaf) cancelAnimationFrame(this.numsRaf); this.stop(); }
   componentDidUpdate(p) {
     // The headline moves when the layout switches between desktop and tablet/phone; re-measure it.
     const small = (this.state.w ?? 1440) < 900;
@@ -544,7 +586,8 @@ class Component extends DCLogic {
           hidden: on ? 'false' : 'true',
           pOp: on ? 1 : 0,
           pVis: on ? 'visible' : 'hidden',
-          pT: on ? 'none' : 'translate3d(0,12px,0)',
+          // Past panels lift away, upcoming ones wait a little lower (as in .pis__panel).
+          pT: on ? 'none' : (i < pi ? 'translate3d(0,-22px,0)' : 'translate3d(0,22px,0)'),
           pTrans: on ? `opacity .55s ${ease} 80ms,transform .65s ${ease} 80ms,visibility 0s` : `opacity .45s ${ease},transform .55s ${ease},visibility 0s .55s`,
           // Cards: the active number is full strength; the others are faded and sit a little lower.
           cardBg: on ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.02)',
