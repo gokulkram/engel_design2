@@ -222,6 +222,162 @@ html body #dc-root,html body #dc-root>.sc-host{height:auto;min-height:100%}
   .ee-reveal{opacity:1;transform:none;transition:none}
   .ee-tile-shine i{animation:none}
 }
+
+/* Certifications, Client Reviews, Forbes, Contact, Footer (from localhost:3100 home). */
+.ee-gold{color:#d4af37}
+.ee-certs{position:relative;overflow:hidden;background:#11162d;padding:64px 0}
+@media (min-width:768px){.ee-certs{padding:96px 0}}
+.ee-certs-head{max-width:768px;margin:0 auto 64px;text-align:center}
+.ee-certs h2{margin:0 0 24px;font:700 clamp(48px,6vw,72px)/1 Jost,Futura,Arial,sans-serif;color:#fff}
+.ee-certs h2 em{font-style:italic;color:#d4af37}
+.ee-certs-head p{margin:0 0 32px;font-size:clamp(18px,1.6vw,20px);font-weight:300;line-height:1.625;color:rgba(226,230,240,.8)}
+.ee-certs-rule{height:1px;width:96px;margin:0 auto;background:rgba(212,175,55,.3)}
+.ee-certs-grid{max-width:1152px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);column-gap:48px;row-gap:64px;align-items:center;justify-items:center}
+@media (min-width:768px){.ee-certs-grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:479px){.ee-certs-grid{column-gap:16px;row-gap:40px}}
+.ee-cert{width:100%;min-width:0;display:flex;flex-direction:column;align-items:center;transition:transform .7s}
+.ee-cert:hover{transform:translateY(-16px)}
+.ee-cert-img{width:min(192px,100%);aspect-ratio:1;transition:filter .7s}
+@media (min-width:768px){.ee-cert-img{width:min(240px,100%)}}
+.ee-cert:hover .ee-cert-img{filter:drop-shadow(0 0 40px rgba(212,175,55,.4))}
+.ee-cert-img img{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 20px rgba(212,175,55,.15));transition:transform .7s}
+.ee-cert:hover .ee-cert-img img{transform:scale(1.1)}
+.ee-cert-name{margin-top:16px;font:600 clamp(20px,1.8vw,24px)/1.3 Jost,Futura,Arial,sans-serif;letter-spacing:0.025em;text-transform:uppercase;color:rgba(255,255,255,.8);transition:color .7s}
+.ee-cert:hover .ee-cert-name{color:#d4af37}
+.ee-cert-full{margin-top:4px;font-size:clamp(16px,1.4vw,18px);line-height:1.25;text-align:center;color:#fff}
+
+.ee-reviews{position:relative;overflow:hidden;background:#fff;padding:80px 0}
+@media (min-width:768px){.ee-reviews{padding:112px 0}}
+.ee-rev-head{max-width:768px;margin:0 auto 64px;text-align:center}
+.ee-rev-eyebrow{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:32px;font:700 12px/1 Jost,Futura,Arial,sans-serif;letter-spacing:0.4em;text-transform:uppercase;color:#957722}
+.ee-rev-eyebrow::before,.ee-rev-eyebrow::after{content:"";height:1px;width:48px;background:#d4af37}
+.ee-reviews h2{margin:0 0 32px;font:700 clamp(36px,4.4vw,60px)/1.1 Jost,Futura,Arial,sans-serif;color:#11162d}
+.ee-reviews h2 em{font-style:italic;color:#957722}
+.ee-rev{position:relative;max-width:1152px;margin:0 auto}
+.ee-rev-arrow{position:absolute;top:50%;z-index:10;width:44px;height:44px;border-radius:50%;border:2px solid rgba(17,22,45,.2);background:transparent;color:rgba(17,22,45,.4);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;padding:0}
+.ee-rev-arrow:hover{border-color:#d4af37;color:#d4af37}
+.ee-rev-arrow svg{width:20px;height:20px}
+.ee-rev-prev{left:0;transform:translate(-8px,-50%)}
+.ee-rev-next{right:0;transform:translate(8px,-50%)}
+@media (min-width:1024px){.ee-rev-prev{transform:translate(-56px,-50%)}.ee-rev-next{transform:translate(56px,-50%)}}
+.ee-rev-view{overflow:hidden;padding-top:40px;touch-action:pan-y}
+.ee-rev-track{display:flex;transition:transform 1s ease-in-out}
+.ee-rev-slide{flex-shrink:0;width:100%;padding:0 16px}
+@media (min-width:640px){.ee-rev-slide{width:50%}}
+@media (min-width:1024px){.ee-rev-slide{width:33.3333%}}
+.ee-rev-card{position:relative;height:100%;border-radius:16px;background:#f8f6f3;padding:64px 32px 32px;text-align:center;transition:box-shadow .5s}
+.ee-rev-card:hover{box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1)}
+.ee-rev-avatar{position:absolute;top:-32px;left:50%;transform:translateX(-50%);width:64px;height:64px;border-radius:50%;border:4px solid #fff;background:#11162d;color:#d4af37;display:flex;align-items:center;justify-content:center;font:700 24px/1 Jost,Futura,Arial,sans-serif;box-shadow:0 10px 15px -3px rgba(0,0,0,.1)}
+.ee-rev-card h4{margin:0 0 8px;font:700 16px/1.5 Jost,Futura,Arial,sans-serif;color:#11162d}
+.ee-rev-stars{display:flex;justify-content:center;gap:2px;margin-bottom:16px;color:#d4af37}
+.ee-rev-stars svg{width:16px;height:16px}
+.ee-rev-card p{margin:0 0 8px;font-size:14px;line-height:1.625;color:#6b7280;display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
+.ee-rev-card.is-open p{display:block;-webkit-line-clamp:unset}
+.ee-rev-more{border:0;background:none;padding:0;cursor:pointer;font:600 12px/1.5 Jost,Futura,Arial,sans-serif;color:#957722}
+.ee-rev-more:hover{text-decoration:underline}
+.ee-rev-more .ee-less,.ee-rev-card.is-open .ee-rev-more .ee-more{display:none}
+.ee-rev-card.is-open .ee-rev-more .ee-less{display:inline}
+.ee-rev-dots{display:flex;justify-content:center;gap:8px;margin-top:40px}
+.ee-rev-dot{width:8px;height:8px;border:0;padding:0;border-radius:999px;background:#e5e7eb;cursor:pointer;transition:all .3s}
+.ee-rev-dot:hover{background:rgba(212,175,55,.4)}
+.ee-rev-dot.is-on{width:32px;background:#d4af37}
+.ee-rev-dot[hidden]{display:none}
+
+.ee-forbes{position:relative;overflow:hidden;background:#fafaf8;padding:40px 0 80px}
+@media (min-width:768px){.ee-forbes{padding:56px 0 112px}}
+.ee-forbes::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,#e5e7eb,transparent)}
+.ee-forbes-grid{max-width:1152px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
+@media (min-width:1024px){.ee-forbes-grid{grid-template-columns:7fr 5fr}}
+.ee-forbes h2{margin:0 0 16px;font:700 clamp(30px,3.6vw,48px)/1.15 Jost,Futura,Arial,sans-serif;color:#11162d}
+@media (min-width:1024px){.ee-forbes h2{line-height:1.05}}
+.ee-forbes-tag{margin:0 0 20px;font:700 clamp(16px,1.6vw,20px)/1.4 Jost,Futura,Arial,sans-serif;letter-spacing:0.4em;text-transform:uppercase;color:#957722}
+.ee-forbes-copy{margin:0 0 32px;font-size:16px;line-height:1.5}
+.ee-forbes-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:8px;background:#11162d;color:#fff;font:600 14px/1.4 Jost,Futura,Arial,sans-serif;letter-spacing:0.05em;text-transform:uppercase;transition:background-color .3s,color .3s}
+.ee-forbes-btn:hover{background:#d4af37;color:#1d2653}
+.ee-forbes-btn svg{width:16px;height:16px}
+.ee-forbes-badge{display:flex;justify-content:center}
+.ee-forbes-badge a{position:relative;display:block}
+.ee-forbes-badge a::before{content:"";position:absolute;inset:16px;border-radius:16px;background:rgba(0,0,0,.05);filter:blur(24px)}
+.ee-forbes-badge img{position:relative;display:block;width:320px;height:320px;max-width:100%;object-fit:contain}
+@media (min-width:768px){.ee-forbes-badge img{width:384px;height:384px}}
+
+.ee-contact{position:relative;overflow:hidden;background:#11162d;padding:64px 0;scroll-margin-top:var(--hdr)}
+@media (min-width:768px){.ee-contact{padding:96px 0}}
+.ee-contact-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:40px;align-items:start}
+.ee-contact-grid>*{min-width:0}
+@media (min-width:1024px){.ee-contact-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px}}
+.ee-contact-head{margin-bottom:40px}
+.ee-contact h2{margin:0;font:700 clamp(48px,4.4vw,60px)/1.1 Jost,Futura,Arial,sans-serif;letter-spacing:-0.025em;color:#d4af37}
+.ee-contact h2 em{font-style:italic}
+.ee-contact h2 span{color:#fff}
+.ee-contact-head p{margin:4px 0 0;font-size:clamp(18px,1.6vw,20px);font-weight:300;color:#fff}
+.ee-team{display:flex;flex-direction:column;gap:20px}
+.ee-team-card{position:relative;overflow:hidden;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff;padding:24px;transition:border-color .5s,box-shadow .5s}
+@media (min-width:768px){.ee-team-card{padding:32px}}
+.ee-team-card::before{content:"";position:absolute;inset:0;background:linear-gradient(to right,rgba(212,175,55,0),rgba(212,175,55,.03),rgba(212,175,55,0));opacity:0;transition:opacity .5s}
+.ee-team-card:hover{border-color:rgba(212,175,55,.4);box-shadow:0 10px 15px -3px rgba(0,0,0,.1)}
+.ee-team-card:hover::before{opacity:1}
+.ee-team-row{position:relative;display:flex;align-items:flex-start;gap:20px}
+@media (min-width:768px){.ee-team-row{gap:24px}}
+.ee-team-photo{flex-shrink:0;width:64px;height:64px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 2px #e5e7eb;transition:box-shadow .5s}
+@media (min-width:768px){.ee-team-photo{width:80px;height:80px}}
+.ee-team-card:hover .ee-team-photo{box-shadow:0 0 0 2px rgba(212,175,55,.4)}
+.ee-team-photo img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.ee-team-info{flex:1;min-width:0}
+.ee-team-info h3{margin:0 0 4px;font:700 20px/1.4 Jost,Futura,Arial,sans-serif;color:#fff}
+.ee-team-creds{margin:0 0 16px;font:700 10px/1.5 Jost,Futura,Arial,sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:rgba(212,175,55,.8)}
+.ee-team-info p{margin:0 0 4px;font-size:14px;line-height:1.45;color:#fff}
+.ee-team-info .b{font-weight:600}
+.ee-team-info .t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ee-team-info a{color:#fff;transition:color .3s}
+.ee-team-info .t a{color:rgba(255,255,255,.8)}
+.ee-team-info a:hover{color:#d4af37}
+.ee-cform{position:relative;background:#fff;padding:32px}
+@media (min-width:768px){.ee-cform{padding:48px}}
+.ee-cform::before{content:"";position:absolute;top:0;left:0;bottom:0;width:8px;background:#d4af37}
+.ee-cform form{display:flex;flex-direction:column;gap:24px}
+.ee-cform-row{display:grid;grid-template-columns:1fr;gap:20px}
+@media (min-width:768px){.ee-cform-row{grid-template-columns:1fr 1fr}}
+.ee-cform label{display:block}
+.ee-cform label>span{display:block;margin-bottom:8px;font:600 11px/1.5 Jost,Futura,Arial,sans-serif;letter-spacing:0.15em;text-transform:uppercase;color:#11162d}
+.ee-cform input,.ee-cform textarea{display:block;width:100%;padding:14px 16px;background:#f8fbff;border:1px solid rgba(17,22,45,.4);border-radius:6px;outline:none;font:400 14px/1.4 Jost,Futura,Arial,sans-serif;color:#11162d;transition:border-color .2s,box-shadow .2s}
+.ee-cform textarea{resize:none}
+.ee-cform input::placeholder,.ee-cform textarea::placeholder{color:rgba(17,22,45,.3)}
+.ee-cform input:focus,.ee-cform textarea:focus{border-color:#d4af37;box-shadow:0 0 0 2px rgba(212,175,55,.1)}
+.ee-cform-captcha{height:80px;border:1px solid rgba(17,22,45,.4);border-radius:6px;background:#f8fbff;display:flex;align-items:center;justify-content:center;font-size:14px;color:rgba(17,22,45,.4)}
+.ee-cform-send{position:relative;overflow:hidden;width:100%;padding:24px 16px;border:0;border-radius:0;background:#11162d;color:#fff;cursor:pointer;font:700 12px/1 Jost,Futura,Arial,sans-serif;letter-spacing:0.5em;text-transform:uppercase;transition:color .5s}
+.ee-cform-send::before{content:"";position:absolute;inset:0;background:#d4af37;transform:translateY(100%);transition:transform .5s}
+.ee-cform-send:hover{color:#1d2653}
+.ee-cform-send:hover::before{transform:none}
+.ee-cform-send span{position:relative;z-index:1}
+.ee-cform-done{display:none;padding:48px 0;text-align:center}
+.ee-cform.is-sent form{display:none}
+.ee-cform.is-sent .ee-cform-done{display:block}
+.ee-cform-tick{width:64px;height:64px;margin:0 auto 24px;border-radius:16px;background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.4);display:flex;align-items:center;justify-content:center;color:#d4af37}
+.ee-cform-tick svg{width:32px;height:32px}
+.ee-cform-done h3{margin:0 0 8px;font:700 24px/1.3 Jost,Futura,Arial,sans-serif;color:#11162d}
+.ee-cform-done p{margin:0 0 24px;color:rgba(17,22,45,.6)}
+.ee-cform-again{border:0;background:none;cursor:pointer;font:700 12px/1 Jost,Futura,Arial,sans-serif;letter-spacing:0.3em;text-transform:uppercase;color:#11162d;transition:color .2s}
+.ee-cform-again:hover{color:#d4af37}
+
+.ee-footer{background:#11162d;color:#fff;border-top:1px solid rgba(255,255,255,.1)}
+.ee-footer-main{padding-top:64px;padding-bottom:64px}
+.ee-footer-grid{display:grid;grid-template-columns:1fr;gap:32px}
+@media (min-width:768px){.ee-footer-grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1024px){.ee-footer-grid{grid-template-columns:repeat(5,1fr)}.ee-footer-brand{grid-column:span 2}}
+.ee-footer-logo{display:block;height:40px;width:auto;margin-bottom:24px}
+@media (min-width:1024px){.ee-footer-logo{height:48px}}
+.ee-footer-brand>p{max-width:448px;margin:0 0 24px;line-height:1.5;color:#d1d5db}
+.ee-footer-contact{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
+.ee-footer-contact div{display:flex;align-items:flex-start;gap:12px;color:#d1d5db;line-height:1.5}
+.ee-footer-contact svg{flex-shrink:0;width:20px;height:20px;margin-top:2px;color:#d4af37}
+.ee-footer a{color:#d1d5db;transition:color .2s}
+.ee-footer a:hover{color:#d4af37}
+.ee-footer-col a:hover{color:#6676b8}
+.ee-footer h3{margin:0 0 16px;font:600 18px/1.5 Jost,Futura,Arial,sans-serif;color:#d4af37}
+.ee-footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.ee-footer-bottom{border-top:1px solid rgba(255,255,255,.3)}
+.ee-footer-bottom .ee-wrap7{padding-top:24px;padding-bottom:24px;text-align:center;font-size:14px;color:#9ca3af}
 </style>
 </helmet>
 
@@ -563,7 +719,281 @@ html body #dc-root,html body #dc-root>.sc-host{height:auto;min-height:100%}
       </div>
     </div>
   </section>
+
+  <!-- Our Certifications (from localhost:3100 home, Certifications). -->
+  <section id="certifications" class="ee-certs" data-screen-label="Certifications" aria-labelledby="certs-title">
+    <div class="ee-wrap7">
+      <div class="ee-certs-head ee-reveal">
+        <h2 id="certs-title">Our <em>Certifications</em></h2>
+        <p>Our analysis and testimony are supported by relevant professional credentials.</p>
+        <div class="ee-certs-rule"></div>
+      </div>
+      <div class="ee-certs-grid">
+        <div class="ee-cert ee-reveal" style="transition-delay:0.00s">
+          <div class="ee-cert-img"><img src="assets/certs/cpa-gold.png" alt="AICPA" loading="lazy" width="500" height="500"></div>
+          <span class="ee-cert-name">CPA</span>
+          <span class="ee-cert-full">Certified Public Accountant</span>
+        </div>
+        <div class="ee-cert ee-reveal" style="transition-delay:0.08s">
+          <div class="ee-cert-img"><img src="assets/certs/cfe-gold.png" alt="ACFE" loading="lazy" width="500" height="500"></div>
+          <span class="ee-cert-name">CFE</span>
+          <span class="ee-cert-full">Certified Fraud Examiner</span>
+        </div>
+        <div class="ee-cert ee-reveal" style="transition-delay:0.16s">
+          <div class="ee-cert-img"><img src="assets/certs/cira-gold.png" alt="AIRA" loading="lazy" width="500" height="500"></div>
+          <span class="ee-cert-name">CIRA</span>
+          <span class="ee-cert-full">Certified Insolvency &amp; Restructuring Advisor</span>
+        </div>
+        <div class="ee-cert ee-reveal" style="transition-delay:0.24s">
+          <div class="ee-cert-img"><img src="assets/certs/cva-gold.png" alt="NACVA" loading="lazy" width="500" height="500"></div>
+          <span class="ee-cert-name">CVA</span>
+          <span class="ee-cert-full">Certified Valuation Analyst</span>
+        </div>
+        <div class="ee-cert ee-reveal" style="transition-delay:0.32s">
+          <div class="ee-cert-img"><img src="assets/certs/maff-gold.png" alt="MAFF" loading="lazy" width="500" height="500"></div>
+          <span class="ee-cert-name">MAFF</span>
+          <span class="ee-cert-full">Master Analyst in Financial Forensics</span>
+        </div>
+        <div class="ee-cert ee-reveal" style="transition-delay:0.40s">
+          <div class="ee-cert-img"><img src="assets/certs/abv-gold.png" alt="ABV" loading="lazy" width="500" height="500"></div>
+          <span class="ee-cert-name">ABV</span>
+          <span class="ee-cert-full">Accredited in Business Valuation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Our Clients Say (from localhost:3100 home, GoogleReviews). -->
+  <section id="reviews" class="ee-reviews" data-screen-label="Client Reviews" aria-labelledby="rev-title">
+    <div class="ee-wrap7">
+      <div class="ee-rev-head">
+        <div class="ee-rev-eyebrow">Client Testimonials</div>
+        <h2 id="rev-title">What Our <em>Clients</em> Say</h2>
+      </div>
+      <div class="ee-rev">
+        <button type="button" class="ee-rev-arrow ee-rev-prev" aria-label="Previous reviews"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
+        <button type="button" class="ee-rev-arrow ee-rev-next" aria-label="Next reviews"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
+        <div class="ee-rev-view">
+          <div class="ee-rev-track">
+            <div class="ee-rev-slide">
+              <div class="ee-rev-card">
+                <div class="ee-rev-avatar" aria-hidden="true">M</div>
+                <h4>Mark K.</h4>
+                <div class="ee-rev-stars" role="img" aria-label="5 out of 5 stars"><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div>
+                <p>I am a real estate litigation attorney who has used Jason Engel as my forensic accounting expert in two multi-million dollar cases. He is eminently responsive and able to synthesize complicated financial transactions so that the fact-finder may easily understand them at trial. I highly recommend him and intend to use him again if the need arises.</p>
+                <button type="button" class="ee-rev-more"><span class="ee-more">Read more</span><span class="ee-less">Show less</span></button>
+              </div>
+            </div>
+            <div class="ee-rev-slide">
+              <div class="ee-rev-card">
+                <div class="ee-rev-avatar" aria-hidden="true">E</div>
+                <h4>Eric K.</h4>
+                <div class="ee-rev-stars" role="img" aria-label="5 out of 5 stars"><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div>
+                <p>I used Jason in a contentious breach of contract case with eight-figure damages. The case was barreling toward trial, and Jason was asked to provide his analysis and opinion in a very short time frame and under significant pressure from the client. Jason and his team did a fantastic job. He was extremely responsive and his report was exactly what we needed. I will use Jason again.</p>
+                <button type="button" class="ee-rev-more"><span class="ee-more">Read more</span><span class="ee-less">Show less</span></button>
+              </div>
+            </div>
+            <div class="ee-rev-slide">
+              <div class="ee-rev-card">
+                <div class="ee-rev-avatar" aria-hidden="true">M</div>
+                <h4>Michael S.</h4>
+                <div class="ee-rev-stars" role="img" aria-label="5 out of 5 stars"><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div>
+                <p>I have had the privilege of using Jason Engel&#x27;s professional services for many years. Simply stated, he is not only excellent at what he does, he is a creative problem solver who always has innovative ways to advance my clients&#x27; interests. I would recommend him without reservation to anyone who is in need of the many services he provides.</p>
+                <button type="button" class="ee-rev-more"><span class="ee-more">Read more</span><span class="ee-less">Show less</span></button>
+              </div>
+            </div>
+            <div class="ee-rev-slide">
+              <div class="ee-rev-card">
+                <div class="ee-rev-avatar" aria-hidden="true">G</div>
+                <h4>Geoffrey G.</h4>
+                <div class="ee-rev-stars" role="img" aria-label="5 out of 5 stars"><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div>
+                <p>Jason is the kind of expert witness you want. One who is always going to provide a well-supported expert opinion. His opinion is independent. It might not always be the one you would hope to hear. But it is the one that is right and correct. Jason is careful, attentive to detail and thorough. He presents well at trial. And he is a pleasure to work with. He has my highest recommendation.</p>
+                <button type="button" class="ee-rev-more"><span class="ee-more">Read more</span><span class="ee-less">Show less</span></button>
+              </div>
+            </div>
+            <div class="ee-rev-slide">
+              <div class="ee-rev-card">
+                <div class="ee-rev-avatar" aria-hidden="true">B</div>
+                <h4>Brian F.</h4>
+                <div class="ee-rev-stars" role="img" aria-label="5 out of 5 stars"><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div>
+                <p>We hired Engel &amp; Engel as a forensic accountant on a construction defect case. We found Jason and Brandon to both be knowledgeable, responsive and professional. We will definitely use them again.</p>
+              </div>
+            </div>
+            <div class="ee-rev-slide">
+              <div class="ee-rev-card">
+                <div class="ee-rev-avatar" aria-hidden="true">E</div>
+                <h4>Ed M.</h4>
+                <div class="ee-rev-stars" role="img" aria-label="5 out of 5 stars"><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div>
+                <p>Jason Engel and his team are professional, knowledgeable, honest, and trustworthy. I would recommend Engel &amp; Engel for any accounting matters.</p>
+              </div>
+            </div>
+            <div class="ee-rev-slide">
+              <div class="ee-rev-card">
+                <div class="ee-rev-avatar" aria-hidden="true">P</div>
+                <h4>Phillip S.</h4>
+                <div class="ee-rev-stars" role="img" aria-label="5 out of 5 stars"><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div>
+                <p>Excellent forensic accounting experts. Sharp analysis and clear presentation. Timely follow through and ability to work under short deadlines.</p>
+              </div>
+            </div>
+            <div class="ee-rev-slide">
+              <div class="ee-rev-card">
+                <div class="ee-rev-avatar" aria-hidden="true">D</div>
+                <h4>David S.</h4>
+                <div class="ee-rev-stars" role="img" aria-label="5 out of 5 stars"><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div>
+                <p>Amazing and thorough job as experts in a Piercing the Corporate Veil case. Very thankful.</p>
+              </div>
+            </div>
+            <div class="ee-rev-slide">
+              <div class="ee-rev-card">
+                <div class="ee-rev-avatar" aria-hidden="true">E</div>
+                <h4>Eric W.</h4>
+                <div class="ee-rev-stars" role="img" aria-label="5 out of 5 stars"><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div>
+                <p>The Engels are the best in the business, hands down. They are a remarkable father-son duo, and I had the opportunity to work with them on a very high-stakes, company-breaking matter. They were outstanding from start to finish. They reviewed opposing counsel’s expert work and professionally dismantled it with precision and credibility. They updated their reports in real time when needed, responded thoroughly to the arbitrator’s inquiries, and provided strong backup for every position they took. Our success was due in large part to having the Engels in our corner. I recommend them without hesitation.</p>
+                <button type="button" class="ee-rev-more"><span class="ee-more">Read more</span><span class="ee-less">Show less</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ee-rev-dots">
+          <button type="button" class="ee-rev-dot is-on" aria-label="Go to review 1"></button>
+          <button type="button" class="ee-rev-dot" aria-label="Go to review 2"></button>
+          <button type="button" class="ee-rev-dot" aria-label="Go to review 3"></button>
+          <button type="button" class="ee-rev-dot" aria-label="Go to review 4"></button>
+          <button type="button" class="ee-rev-dot" aria-label="Go to review 5"></button>
+          <button type="button" class="ee-rev-dot" aria-label="Go to review 6"></button>
+          <button type="button" class="ee-rev-dot" aria-label="Go to review 7"></button>
+          <button type="button" class="ee-rev-dot" aria-label="Go to review 8"></button>
+          <button type="button" class="ee-rev-dot" aria-label="Go to review 9"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Forbes 2025 Honoree (from localhost:3100 home, ForbesBanner). -->
+  <section class="ee-forbes" data-screen-label="Forbes" aria-labelledby="forbes-title">
+    <div class="ee-wrap7">
+      <div class="ee-forbes-grid">
+        <div class="ee-reveal">
+          <h2 id="forbes-title">Named Among America&#x27;s Top CPAs for Valuations</h2>
+          <p class="ee-forbes-tag">Forbes 2025 Honoree</p>
+          <p class="ee-forbes-copy">Jason Engel has been named among Forbes&#x27; inaugural list of America&#x27;s Top CPAs in Valuations. This prestigious list was drawn from nominations, independent research, and interviews with industry leaders and experts.</p>
+          <a class="ee-forbes-btn" href="/news-and-insights/jason-engel-forbes-top-cpas-valuations-2025">Read More<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></a>
+        </div>
+        <div class="ee-forbes-badge ee-reveal" style="transition-delay:.15s">
+          <a href="/news-and-insights/jason-engel-forbes-top-cpas-valuations-2025"><img src="assets/memberships/forbes.png" alt="Forbes America&#x27;s Top CPAs for Valuations 2025" loading="lazy" width="384" height="384"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact us today (from localhost:3100 home, ContactCTA). -->
+  <section id="contact" class="ee-contact" data-screen-label="Contact" aria-labelledby="contact-title">
+    <div class="ee-wrap7">
+      <div class="ee-contact-grid">
+        <div>
+          <div class="ee-contact-head ee-reveal">
+            <h2 id="contact-title"><em>Contact</em><span> us today</span></h2>
+            <p>to discuss how we can help you</p>
+          </div>
+          <div class="ee-team">
+            <div class="ee-team-card ee-reveal" style="transition-delay:0.00s">
+              <div class="ee-team-row">
+                <div class="ee-team-photo"><img src="assets/team/jason-engel.jpg" alt="Jason A. Engel" loading="lazy"></div>
+                <div class="ee-team-info">
+                  <h3>Jason A. Engel</h3>
+                  <p class="ee-team-creds">CPA, CFE, CIRA, CVA, MAFF, ABV</p>
+                  <p>350 S Grand Avenue, Suite 3160</p>
+                  <p>Los Angeles, CA 90071</p>
+                  <p class="b">MAIN: <a href="tel:+13102772220">(310) 277-2220</a></p>
+                  <p class="b">DIRECT: <a href="tel:+13102775986">(310) 277-5986</a></p>
+                  <p class="b t">EMAIL: <a href="mailto:jasonengel@engelandengel.com">jasonengel@engelandengel.com</a></p>
+                </div>
+              </div>
+            </div>
+            <div class="ee-team-card ee-reveal" style="transition-delay:0.15s">
+              <div class="ee-team-row">
+                <div class="ee-team-photo"><img src="assets/team/brandon-engel.jpg" alt="Brandon J. Engel" loading="lazy"></div>
+                <div class="ee-team-info">
+                  <h3>Brandon J. Engel</h3>
+                  <p class="ee-team-creds">CPA, CFE, ABV</p>
+                  <p>350 S Grand Avenue, Suite 3160</p>
+                  <p>Los Angeles, CA 90071</p>
+                  <p class="b">MAIN: <a href="tel:+13102772220">(310) 277-2220</a></p>
+                  <p class="b">DIRECT: <a href="tel:+13105790115">(310) 579-0115</a></p>
+                  <p class="b t">EMAIL: <a href="mailto:brandon@engelandengel.com">brandon@engelandengel.com</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ee-cform ee-reveal" style="transition-delay:.3s">
+          <form>
+            <div class="ee-cform-row">
+              <label><span>Your Name</span><input type="text" name="name" placeholder="Your Name *" required="required" autocomplete="name"></label>
+              <label><span>Your Email</span><input type="email" name="email" placeholder="Your Email *" required="required" autocomplete="email"></label>
+            </div>
+            <label><span>Your Phone Number</span><input type="tel" name="phone" placeholder="Your Phone Number" autocomplete="tel"></label>
+            <label><span>Enter a Brief Message</span><textarea name="message" rows="5" placeholder="Enter a Brief Message"></textarea></label>
+            <div><label><span>Google reCAPTCHA</span></label><div class="ee-cform-captcha">reCAPTCHA widget placeholder</div></div>
+            <button type="submit" class="ee-cform-send"><span>Send Message</span></button>
+          </form>
+          <div class="ee-cform-done" role="status">
+            <div class="ee-cform-tick"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div>
+            <h3>Message Received</h3>
+            <p>Thank you for contacting Engel &amp; Engel. We&#x27;ll respond within 24 hours.</p>
+            <button type="button" class="ee-cform-again">Send Another Message</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
+<!-- Footer (from localhost:3100, layout/Footer). -->
+<footer class="ee-footer" data-screen-label="Footer">
+  <div class="ee-wrap7 ee-footer-main">
+    <div class="ee-footer-grid">
+      <div class="ee-footer-brand">
+        <img class="ee-footer-logo" src="assets/ee-logo-horizontal-white-cropped.png" alt="Engel &amp; Engel LLP, Forensic Accountants">
+        <p>Los Angeles&#x27; premier forensic accounting firm with 30+ years of experience in complex business litigation and expert witness testimony.</p>
+        <div class="ee-footer-contact">
+          <div><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg><a href="tel:+13102772220">(310) 277-2220</a></div>
+          <div><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg><span>info@engelandengel.com</span></div>
+          <div><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg><span>350 S Grand Avenue, Suite 3160<br>Los Angeles, CA 90071</span></div>
+        </div>
+      </div>
+      <div class="ee-footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="/services/forensic-accounting">Forensic Accounting</a></li>
+          <li><a href="/services/expert-witness-testimony">Expert Witness Testimony</a></li>
+          <li><a href="/services/joint-retention-program">Joint Retention Program</a></li>
+          <li><a href="/services/internal-investigations">Internal Investigations</a></li>
+        </ul>
+      </div>
+      <div class="ee-footer-col">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="/#about">About Us</a></li>
+          <li><a href="/team">Our Team</a></li>
+          <li><a href="/news-and-insights">News &amp; Insights</a></li>
+          <li><a href="/careers">Careers</a></li>
+          <li><a href="/cases">Cases</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="ee-footer-col">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="/publications">Publications</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="ee-footer-bottom">
+    <div class="ee-wrap7">&#xA9; 2026 Engel &amp; Engel. All rights reserved.</div>
+  </div>
+</footer>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;introAnimation&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;trailMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Stays lit&quot;,&quot;Passes by&quot;],&quot;default&quot;:&quot;Stays lit&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
 class Component extends DCLogic {
@@ -739,6 +1169,55 @@ class Component extends DCLogic {
     this.play();
     this.onScroll();
     this.initReveal();
+    this.initReviews();
+    this.initContactForm();
+  }
+  // Client reviews slider: 3 / 2 / 1 cards, arrows, dots, swipe, autoplay every 6s (pauses 10s after a tap).
+  initReviews() {
+    const root = document.querySelector('.ee-rev');
+    if (!root || root._init) return;
+    root._init = true;
+    const track = root.querySelector('.ee-rev-track');
+    const n = track.children.length;
+    const dots = Array.from(root.querySelectorAll('.ee-rev-dot'));
+    let idx = 0, vis = 3, paused = false, pauseT = null;
+    const maxI = () => Math.max(0, n - vis);
+    const render = () => {
+      track.style.transform = 'translateX(-' + (idx * 100 / vis) + '%)';
+      dots.forEach((d, i) => { d.hidden = i > maxI(); d.classList.toggle('is-on', i === idx); });
+    };
+    const layout = () => {
+      vis = window.innerWidth < 640 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+      if (idx > maxI()) idx = maxI();
+      render();
+    };
+    const go = i => { const m = maxI(); idx = i > m ? 0 : i < 0 ? m : i; render(); };
+    const pause = () => { paused = true; clearTimeout(pauseT); pauseT = setTimeout(() => { paused = false; }, 10000); };
+    root.querySelector('.ee-rev-prev').addEventListener('click', () => { go(idx - 1); pause(); });
+    root.querySelector('.ee-rev-next').addEventListener('click', () => { go(idx + 1); pause(); });
+    dots.forEach((d, i) => d.addEventListener('click', () => { go(i); pause(); }));
+    root.querySelectorAll('.ee-rev-more').forEach(b => b.addEventListener('click', () => b.closest('.ee-rev-card').classList.toggle('is-open')));
+    let x0 = null, x1 = null;
+    const view = root.querySelector('.ee-rev-view');
+    view.addEventListener('touchstart', e => { x1 = null; x0 = e.touches[0].clientX; }, { passive: true });
+    view.addEventListener('touchmove', e => { x1 = e.touches[0].clientX; }, { passive: true });
+    view.addEventListener('touchend', () => {
+      if (x0 !== null && x1 !== null) { const dx = x0 - x1; if (dx > 50) { go(idx + 1); pause(); } else if (dx < -50) { go(idx - 1); pause(); } }
+      x0 = x1 = null;
+    });
+    this.revResize = layout;
+    window.addEventListener('resize', layout);
+    this.revTimer = setInterval(() => { if (!paused) go(idx + 1); }, 6000);
+    layout();
+  }
+  // Contact form: design preview only, no backend here. Shows the "Message Received" state like the live site.
+  initContactForm() {
+    const box = document.querySelector('.ee-cform');
+    if (!box || box._init) return;
+    box._init = true;
+    const form = box.querySelector('form');
+    form.addEventListener('submit', e => { e.preventDefault(); form.reset(); box.classList.add('is-sent'); });
+    box.querySelector('.ee-cform-again').addEventListener('click', () => box.classList.remove('is-sent'));
   }
   // Services / Expertise cards fade up once when they scroll into view.
   initReveal() {
@@ -749,7 +1228,7 @@ class Component extends DCLogic {
     }), { rootMargin: '0px 0px -60px 0px' });
     els.forEach(el => this.revealIO.observe(el));
   }
-  componentWillUnmount() { if (this.revealIO) this.revealIO.disconnect(); window.removeEventListener('resize', this.onResize); window.removeEventListener('scroll', this.onScroll); if (this.ro) this.ro.disconnect(); if (this.numsRaf) cancelAnimationFrame(this.numsRaf); this.stop(); }
+  componentWillUnmount() { if (this.revealIO) this.revealIO.disconnect(); clearInterval(this.revTimer); if (this.revResize) window.removeEventListener('resize', this.revResize); window.removeEventListener('resize', this.onResize); window.removeEventListener('scroll', this.onScroll); if (this.ro) this.ro.disconnect(); if (this.numsRaf) cancelAnimationFrame(this.numsRaf); this.stop(); }
   componentDidUpdate(p) {
     // The headline moves when the layout switches between desktop and tablet/phone; re-measure it.
     const small = (this.state.w ?? 1440) < 900;
