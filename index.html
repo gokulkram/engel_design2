@@ -97,8 +97,6 @@ html body #dc-root,html body #dc-root>.sc-host{height:auto;min-height:100%}
 .ee-nums-in{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut);display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(40px,5vw,72px)}
 .ee-nums-side{align-self:stretch}
 .ee-nums-sticky{position:sticky;top:calc(var(--hdr) + 32px);padding-bottom:24px}
-.ee-nums-eyebrow{margin:0 0 20px;display:flex;align-items:center;gap:16px;font:600 14px/1.4 Jost,Futura,Arial,sans-serif;letter-spacing:0.18em;text-transform:uppercase;color:#d4af37}
-.ee-nums-eyebrow::before{content:"";width:48px;height:2px;background:#d4af37}
 .ee-nums-title{margin:0;font:500 clamp(38px,4.6vw,84px)/1 Jost,Futura,Arial,sans-serif;letter-spacing:-0.03em;text-transform:uppercase;color:#ffffff}
 .ee-nums-title span{display:block}
 .ee-nums-intro{margin:14px 0 0;max-width:52ch;font-size:17px;line-height:1.6;color:rgba(255,255,255,0.7)}
@@ -112,7 +110,6 @@ html body #dc-root,html body #dc-root>.sc-host{height:auto;min-height:100%}
 /* Big faint, tilted copy of the stat on the right of each box. It turns and slides into place on the active box. */
 .ee-nums-ghost{position:absolute;right:clamp(12px,2vw,40px);top:50%;transform-origin:100% 50%;white-space:nowrap;font:900 clamp(90px,8vw,160px)/0.8 'Arial Black','Arial Bold',Arial,sans-serif;letter-spacing:-0.03em;font-variant-numeric:lining-nums tabular-nums;pointer-events:none;user-select:none;transition:color .8s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)}
 .ee-nums-fig{position:relative;height:100%;display:flex;flex-direction:column;justify-content:center;padding:clamp(24px,3vw,48px);transition:opacity .55s cubic-bezier(.22,.61,.36,1),transform .65s cubic-bezier(.22,.61,.36,1)}
-.ee-nums-count{position:absolute;top:clamp(20px,2.4vw,36px);left:clamp(24px,3vw,48px);font:600 12px/1 Jost,Futura,Arial,sans-serif;letter-spacing:0.16em;color:#e0c988}
 .ee-nums-big{display:block;font:900 clamp(38px,3.8vw,72px)/1 'Arial Black','Arial Bold',Arial,sans-serif;color:#d4af37;text-shadow:0 4px 30px rgba(0,0,0,0.35);font-variant-numeric:lining-nums tabular-nums}
 .ee-nums-cardlabel{display:block;margin-top:8px;font:500 clamp(16px,1.25vw,21px)/1.25 Jost,Futura,Arial,sans-serif;color:#ffffff}
 /* Desktop: the section stops under the header and fills the screen; scrolling moves the cards
@@ -127,9 +124,8 @@ html body #dc-root,html body #dc-root>.sc-host{height:auto;min-height:100%}
   .ee-nums-view{align-self:center;height:var(--nv);overflow:hidden}
   .ee-nums-media{will-change:transform}
   .ee-nums-shot{height:var(--nh);min-height:0}
-  /* Tighter boxes: smaller padding, count tucked into the top corner. */
-  .ee-nums-fig{padding:30px clamp(20px,2vw,32px) 12px}
-  .ee-nums-count{top:16px;left:clamp(20px,2vw,32px)}
+  /* Tighter boxes: smaller padding. */
+  .ee-nums-fig{padding:12px clamp(20px,2vw,32px)}
   .ee-nums-big{font-size:clamp(34px,3.2vw,58px)}
   /* The left side is exactly as tall as the two cards: title at the top, active name at the bottom. */
   .ee-nums-side{align-self:center;height:var(--nv);display:flex;flex-direction:column}
@@ -139,7 +135,6 @@ html body #dc-root,html body #dc-root>.sc-host{height:auto;min-height:100%}
 /* Shorter screens: tighten the left side so the whole numbered list stays on screen. */
 @media (min-width:921px) and (max-height:860px){
   .ee-nums-sticky{top:calc(var(--hdr) + 16px)}
-  .ee-nums-eyebrow{margin-bottom:12px}
   .ee-nums-title{font-size:clamp(34px,4vw,64px)}
 }
 @media (max-width:920px){
@@ -150,7 +145,6 @@ html body #dc-root,html body #dc-root>.sc-host{height:auto;min-height:100%}
   .ee-nums-media{gap:40px}
   .ee-nums-shot{height:auto;min-height:0;padding:8px 0;background:rgba(255,255,255,0.05) !important;border-color:#d4af37 !important}
   .ee-nums-fig{opacity:1 !important;transform:none !important}
-  .ee-nums-count{position:static;display:block;margin-bottom:12px}
 }
 /* Phones: no tilted shadow number in the boxes. */
 @media (max-width:699px){
@@ -243,7 +237,6 @@ html body #dc-root,html body #dc-root>.sc-host{height:auto;min-height:100%}
     <div class="ee-nums-in">
       <div class="ee-nums-side">
         <div class="ee-nums-sticky">
-          <p class="ee-nums-eyebrow">By the Numbers</p>
           <h2 id="nums-title" class="ee-nums-title"><span>Our Numbers</span> <span>Do the Talking</span></h2>
           <div class="ee-nums-active">
             <sc-for list="{{ nums }}" as="p" hint-placeholder-count="6">
@@ -261,7 +254,6 @@ html body #dc-root,html body #dc-root>.sc-host{height:auto;min-height:100%}
             <div class="ee-nums-shot" style="background:{{ p.cardBg }};border-color:{{ p.cardLine }}">
               <span class="ee-nums-ghost" aria-hidden="true" style="color:{{ p.ghost }};transform:{{ p.ghostT }}">{{ p.final }}</span>
               <div class="ee-nums-fig" style="opacity:{{ p.figOp }};transform:{{ p.figT }}">
-                <span class="ee-nums-count">{{ p.no }} / 06</span>
                 <strong class="ee-nums-big">{{ p.final }}</strong>
                 <span class="ee-nums-cardlabel">{{ p.label }}</span>
               </div>
