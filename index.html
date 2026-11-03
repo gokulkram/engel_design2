@@ -379,9 +379,10 @@ html body #dc-root,html body #dc-root>.sc-host{height:auto;min-height:100%}
 .ee-footer-bottom{border-top:1px solid rgba(255,255,255,.3)}
 .ee-footer-bottom .ee-wrap7{padding-top:24px;padding-bottom:24px;text-align:center;font-size:14px;color:#9ca3af}
 
-/* Phone tweaks: full email addresses, slider arrows below the cards, shorter footer. */
-@media (max-width:639px){
-  .ee-team-info .t{white-space:normal;overflow:visible;overflow-wrap:anywhere}
+/* Phone/tablet tweaks: full email addresses everywhere; slider arrows below the cards until
+   there is room outside them (1280px+); shorter footer on phones. */
+.ee-team-info .t{white-space:normal;overflow:visible;overflow-wrap:break-word}
+@media (max-width:1279px){
   .ee-rev{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;column-gap:16px}
   .ee-rev-view{order:0;width:100%}
   .ee-rev-prev{order:1}
@@ -921,7 +922,7 @@ html body #dc-root,html body #dc-root>.sc-host{height:auto;min-height:100%}
                   <p>Los Angeles, CA 90071</p>
                   <p class="b">MAIN: <a href="tel:+13102772220">(310) 277-2220</a></p>
                   <p class="b">DIRECT: <a href="tel:+13102775986">(310) 277-5986</a></p>
-                  <p class="b t">EMAIL: <a href="mailto:jasonengel@engelandengel.com">jasonengel@engelandengel.com</a></p>
+                  <p class="b t">EMAIL: <a href="mailto:jasonengel@engelandengel.com">jasonengel@<wbr>engelandengel.com</a></p>
                 </div>
               </div>
             </div>
@@ -935,7 +936,7 @@ html body #dc-root,html body #dc-root>.sc-host{height:auto;min-height:100%}
                   <p>Los Angeles, CA 90071</p>
                   <p class="b">MAIN: <a href="tel:+13102772220">(310) 277-2220</a></p>
                   <p class="b">DIRECT: <a href="tel:+13105790115">(310) 579-0115</a></p>
-                  <p class="b t">EMAIL: <a href="mailto:brandon@engelandengel.com">brandon@engelandengel.com</a></p>
+                  <p class="b t">EMAIL: <a href="mailto:brandon@engelandengel.com">brandon@<wbr>engelandengel.com</a></p>
                 </div>
               </div>
             </div>
