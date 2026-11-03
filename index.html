@@ -155,9 +155,8 @@ html body #dc-root,html body #dc-root>.sc-host{height:auto;min-height:100%}
 }
 
 /* Our Services + Our Areas of Expertise (copied from localhost:3100 home: ServicesOverview / ExpertiseGridV4). */
-.ee-wrap7{max-width:1280px;margin:0 auto;padding:0 16px}
-@media (min-width:640px){.ee-wrap7{padding:0 24px}}
-@media (min-width:1024px){.ee-wrap7{padding:0 32px}}
+/* Same width and side spacing as the header, hero and About, so all left edges line up. */
+.ee-wrap7{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
 .ee-reveal{opacity:0;transform:translateY(30px);transition:opacity .5s ease,transform .5s ease}
 .ee-reveal.is-in{opacity:1;transform:none}
 
@@ -286,12 +285,12 @@ html body #dc-root,html body #dc-root>.sc-host{height:auto;min-height:100%}
 .ee-forbes{position:relative;overflow:hidden;background:#fafaf8;padding:40px 0 80px}
 @media (min-width:768px){.ee-forbes{padding:56px 0 112px}}
 .ee-forbes::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,#e5e7eb,transparent)}
-.ee-forbes-grid{max-width:1152px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
+.ee-forbes-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
 @media (min-width:1024px){.ee-forbes-grid{grid-template-columns:7fr 5fr}}
 .ee-forbes h2{margin:0 0 16px;font:700 clamp(30px,3.6vw,48px)/1.15 Jost,Futura,Arial,sans-serif;color:#11162d}
 @media (min-width:1024px){.ee-forbes h2{line-height:1.05}}
 .ee-forbes-tag{margin:0 0 20px;font:700 clamp(16px,1.6vw,20px)/1.4 Jost,Futura,Arial,sans-serif;letter-spacing:0.4em;text-transform:uppercase;color:#957722}
-.ee-forbes-copy{margin:0 0 32px;font-size:16px;line-height:1.5}
+.ee-forbes-copy{max-width:680px;margin:0 0 32px;font-size:16px;line-height:1.5}
 .ee-forbes-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:8px;background:#11162d;color:#fff;font:600 14px/1.4 Jost,Futura,Arial,sans-serif;letter-spacing:0.05em;text-transform:uppercase;transition:background-color .3s,color .3s}
 .ee-forbes-btn:hover{background:#d4af37;color:#1d2653}
 .ee-forbes-btn svg{width:16px;height:16px}
