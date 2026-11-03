@@ -378,6 +378,21 @@ html body #dc-root,html body #dc-root>.sc-host{height:auto;min-height:100%}
 .ee-footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
 .ee-footer-bottom{border-top:1px solid rgba(255,255,255,.3)}
 .ee-footer-bottom .ee-wrap7{padding-top:24px;padding-bottom:24px;text-align:center;font-size:14px;color:#9ca3af}
+
+/* Phone tweaks: full email addresses, slider arrows below the cards, shorter footer. */
+@media (max-width:639px){
+  .ee-team-info .t{white-space:normal;overflow:visible;overflow-wrap:anywhere}
+  .ee-rev{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;column-gap:16px}
+  .ee-rev-view{order:0;width:100%}
+  .ee-rev-prev{order:1}
+  .ee-rev-dots{order:2;margin-top:32px}
+  .ee-rev-next{order:3}
+  .ee-rev-arrow{position:static;transform:none;margin-top:32px}
+}
+@media (max-width:767px){
+  .ee-footer-grid{grid-template-columns:1fr 1fr;column-gap:24px}
+  .ee-footer-brand,.ee-footer-brand + .ee-footer-col{grid-column:1/-1}
+}
 </style>
 </helmet>
 
